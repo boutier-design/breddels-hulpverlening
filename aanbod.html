@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aanbod – Breddels Hulpverlening</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ─────────────────────────────── */
+    :root {
+      --navy:       #1B3A6B;
+      --blue:       #2D5FA0;
+      --mid-blue:   #4A7EBD;
+      --light-blue: #7AAECF;
+      --pale:       #EBF3FA;
+      --pale-2:     #F4F8FC;
+      --white:      #FFFFFF;
+      --text:       #1E2B3C;
+      --muted:      #5A6E84;
+      --border:     #D0E2F0;
+      --radius:     10px;
+      --radius-lg:  18px;
+      --shadow:     0 4px 24px rgba(27,58,107,.10);
+      --shadow-sm:  0 2px 10px rgba(27,58,107,.08);
+    }
+
+    /* ─── Reset ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Typography ─────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.25;
+      color: var(--navy);
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; }
+    p  { line-height: 1.75; color: var(--muted); font-size: .975rem; }
+    .label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid-blue);
+    }
+
+    /* ─── Layout ─────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+
+    /* ─── Buttons ────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all .2s ease;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .btn-primary:hover { background: var(--navy); border-color: var(--navy); }
+    .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,.7); }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+    .btn-ghost { background: transparent; color: var(--blue); border-color: var(--border); padding: 10px 22px; }
+    .btn-ghost:hover { background: var(--pale); }
+    .btn-sm { padding: 9px 20px; font-size: .85rem; }
+
+    /* ─── Nav ────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 32px;
+    }
+    .nav-logo img { height: 48px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 8px 14px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--pale); color: var(--navy); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; background: var(--pale); }
+    .nav-cta { margin-left: 8px; }
+
+    /* ─── Page Hero ──────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+    .page-hero-bg { position: absolute; inset: 0; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .page-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11,28,60,.82) 0%, rgba(27,58,107,.65) 60%, rgba(45,95,160,.45) 100%);
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero-content { max-width: 640px; padding: 56px 0; }
+    .page-hero-content .label { color: rgba(255,255,255,.65); margin-bottom: 12px; }
+    .page-hero-content h1 { color: var(--white); margin-bottom: 16px; }
+    .page-hero-content p  { color: rgba(255,255,255,.78); font-size: 1.05rem; max-width: 480px; }
+
+    /* ─── Breadcrumb ──────────────────────────── */
+    .breadcrumb { background: var(--pale-2); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .breadcrumb-inner { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); }
+    .breadcrumb-inner a { color: var(--blue); }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* ─── Intro ──────────────────────────────── */
+    .intro { background: var(--white); padding: 72px 0 60px; }
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro-text .label { margin-bottom: 12px; }
+    .intro-text h2 { margin-bottom: 20px; }
+    .intro-text p { margin-bottom: 14px; }
+    .intro-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: var(--pale);
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .badge svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; }
+    .intro-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 420px;
+      box-shadow: var(--shadow);
+    }
+    .intro-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ─── Section header ─────────────────────── */
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .label { margin-bottom: 10px; }
+    .section-header h2  { margin-bottom: 14px; }
+    .section-header p   { max-width: 480px; margin: 0 auto; }
+
+    /* ─── Services detail ────────────────────── */
+    .services-detail { background: var(--pale); }
+    .service-detail-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      margin-bottom: 32px;
+      transition: box-shadow .25s;
+    }
+    .service-detail-card:hover { box-shadow: var(--shadow); }
+    .service-detail-card.reverse { direction: rtl; }
+    .service-detail-card.reverse > * { direction: ltr; }
+    .sdc-photo { overflow: hidden; min-height: 320px; }
+    .sdc-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .service-detail-card:hover .sdc-photo img { transform: scale(1.04); }
+    .sdc-body { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; }
+    .sdc-icon {
+      width: 48px; height: 48px;
+      background: var(--pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .sdc-icon svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; }
+    .sdc-body .label { margin-bottom: 8px; }
+    .sdc-body h3 { font-size: 1.35rem; margin-bottom: 14px; }
+    .sdc-body p  { font-size: .92rem; margin-bottom: 20px; }
+    .sdc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .sdc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .sdc-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px; height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+    .link-arrow {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap .2s;
+    }
+    .link-arrow:hover { gap: 10px; }
+    .link-arrow::after { content: '→'; }
+
+    /* ─── Coming soon card ───────────────────── */
+    .coming-soon-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 32px;
+      border: 2px dashed var(--border);
+    }
+    .cs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: var(--pale);
+      border-radius: 50px;
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--mid-blue);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 16px;
+    }
+    .cs-badge svg { width: 12px; height: 12px; stroke: var(--mid-blue); fill: none; }
+    .coming-soon-card h3 { font-size: 1.35rem; margin-bottom: 12px; }
+    .coming-soon-card p { font-size: .92rem; }
+    .cs-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 240px;
+      opacity: .65;
+      filter: grayscale(30%);
+    }
+    .cs-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ─── CTA banner ─────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-banner .label { color: rgba(255,255,255,.55); margin-bottom: 12px; }
+    .cta-banner h2 { color: var(--white); margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,.72); max-width: 460px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Footer ─────────────────────────────── */
+    footer { background: var(--navy); padding: 64px 0 0; color: rgba(255,255,255,.7); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand img { height: 52px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand p { font-size: .88rem; margin-bottom: 24px; }
+    .newsletter-form { display: flex; border-radius: 50px; overflow: hidden; }
+    .newsletter-form input { flex: 1; padding: 11px 18px; border: none; background: rgba(255,255,255,.08); color: var(--white); font-family: inherit; font-size: .85rem; outline: none; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
+    .newsletter-form button { padding: 11px 18px; background: var(--mid-blue); color: var(--white); border: none; font-family: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; transition: background .2s; white-space: nowrap; }
+    .newsletter-form button:hover { background: var(--light-blue); color: var(--navy); }
+    .footer-col h5 { font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: .9rem; color: rgba(255,255,255,.7); transition: color .15s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .social-links { display: flex; flex-direction: column; gap: 10px; }
+    .social-link { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: rgba(255,255,255,.7); transition: color .15s; }
+    .social-link:hover { color: var(--white); }
+    .social-icon { width: 32px; height: 32px; background: rgba(255,255,255,.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .social-icon svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: .82rem; color: rgba(255,255,255,.35); flex-wrap: wrap; }
+    .footer-bottom a { color: rgba(255,255,255,.35); transition: color .15s; }
+    .footer-bottom a:hover { color: rgba(255,255,255,.7); }
+    .footer-legal { display: flex; gap: 20px; }
+
+    /* ─── Scroll reveal ──────────────────────── */
+    [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .55s ease, transform .55s ease; }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-reveal-delay="1"] { transition-delay: .1s; }
+    [data-reveal-delay="2"] { transition-delay: .2s; }
+    [data-reveal-delay="3"] { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="Breddels Hulpverlening" />
+    </a>
+    <div class="nav-links">
+      <a href="wie-zijn-we.html">Wie zijn we</a>
+      <a href="aanbod.html" class="active">Aanbod</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE HERO
+═══════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://picsum.photos/seed/aanbodbreddels/1400/600" alt="" />
+  </div>
+  <div class="container">
+    <div class="page-hero-content">
+      <p class="label">Wat wij bieden</p>
+      <h1>Ons aanbod</h1>
+      <p>Van ambulante begeleiding tot paardencoaching — wij bieden diverse vormen van ondersteuning, afgestemd op jouw situatie en doelen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Aanbod</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     INTRO
+═══════════════════════════════════════════ -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-inner">
+      <div class="intro-text" data-reveal>
+        <p class="label">Begeleiding op maat</p>
+        <h2>Voor iedereen die een steuntje in de rug nodig heeft</h2>
+        <p>Bij Breddels Hulpverlening bieden we begeleiding aan jongvolwassenen en volwassenen met psychiatrische problematiek of een verstandelijke beperking. We kijken altijd naar wat jij nodig hebt.</p>
+        <p>Ons aanbod is breed en persoonlijk. Of het nu gaat om ondersteuning thuis, dagbesteding of een bijzonder traject zoals paardencoaching — we stemmen alles af op jouw unieke situatie.</p>
+        <div class="intro-badges">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            Jongvolwassenen
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+            Volwassenen
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            Op maat
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            Professioneel
+          </span>
+        </div>
+      </div>
+      <div class="intro-photo" data-reveal data-reveal-delay="2">
+        <img src="https://picsum.photos/seed/introaanbod/700/840" alt="Begeleiding" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICES DETAIL
+═══════════════════════════════════════════ -->
+<section class="services-detail">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">Ons volledige aanbod</p>
+      <h2>Wat we voor jou kunnen doen</h2>
+      <p>Elk traject begint bij jou. We bespreken samen welke vorm van begeleiding het beste bij jouw situatie past.</p>
+    </div>
+
+    <!-- Ambulante begeleiding -->
+    <div class="service-detail-card" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/ambulant/840/640" alt="Ambulante begeleiding" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <p class="label">Begeleiding thuis</p>
+        <h3>Ambulante begeleiding</h3>
+        <p>Begeleiding in jouw eigen omgeving: thuis, in de wijk of op de plek waar jij je het prettigst voelt. We komen naar jou toe en sluiten aan bij jouw dagelijks leven.</p>
+        <ul class="sdc-list">
+          <li>Ondersteuning bij dagelijkse activiteiten en zelfredzaamheid</li>
+          <li>Hulp bij administratie, zorg en praktische zaken</li>
+          <li>Begeleiding naar werk, school of dagbesteding</li>
+          <li>Aandacht voor sociale contacten en welzijn</li>
+        </ul>
+        <a href="contact.html" class="link-arrow">Meer informatie</a>
+      </div>
+    </div>
+
+    <!-- Begeleiding op kantoor -->
+    <div class="service-detail-card reverse" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/kantoor/840/640" alt="Begeleiding op kantoor" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2M5 21H3m4-10h1m4 0h1m-6 4h1m4 0h1"/></svg>
+        </div>
+        <p class="label">Op locatie</p>
+        <h3>Begeleiding op kantoor</h3>
+        <p>Soms is het fijn om even weg te zijn uit je eigen omgeving. Op ons kantoor bieden we een rustige, veilige plek voor gesprekken, planning en begeleiding.</p>
+        <ul class="sdc-list">
+          <li>Gestructureerde gesprekken en coaching</li>
+          <li>Werken aan persoonlijke doelen en vaardigheden</li>
+          <li>Praktische ondersteuning in een neutrale omgeving</li>
+          <li>Intakegesprekken en voortgangsevaluaties</li>
+        </ul>
+        <a href="contact.html" class="link-arrow">Meer informatie</a>
+      </div>
+    </div>
+
+    <!-- Dagbesteding -->
+    <div class="service-detail-card" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/dagbesteding/840/640" alt="Dagbesteding" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <p class="label">Structuur en activiteiten</p>
+        <h3>Dagbesteding</h3>
+        <p>Structuur en zinvolle activiteiten die passen bij jouw ritme en mogelijkheden. Dagbesteding helpt om een ritme op te bouwen en sociale vaardigheden te ontwikkelen.</p>
+        <ul class="sdc-list">
+          <li>Activiteiten afgestemd op niveau en interesse</li>
+          <li>Opbouwen van dagstructuur en routine</li>
+          <li>Sociale contacten en samenwerken</li>
+          <li>Ondersteuning door ervaren begeleiders</li>
+        </ul>
+        <a href="contact.html" class="link-arrow">Meer informatie</a>
+      </div>
+    </div>
+
+    <!-- Paardencoaching -->
+    <div class="service-detail-card reverse" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/paarden/840/640" alt="Paardencoaching" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 0v18M3 12h18"/></svg>
+        </div>
+        <p class="label">Bijzonder traject</p>
+        <h3>Paardencoaching</h3>
+        <p>Paarden zijn eerlijk en reageren puur op wat je uitstraalt. Paardencoaching is een krachtige methode om zelfvertrouwen, communicatie en zelfbewustzijn te ontwikkelen — zonder woorden.</p>
+        <ul class="sdc-list">
+          <li>Ervaringsgericht leren in de natuur</li>
+          <li>Ontwikkelen van zelfvertrouwen en grenzen stellen</li>
+          <li>Werken aan non-verbale communicatie</li>
+          <li>Geschikt voor mensen van alle achtergronden</li>
+        </ul>
+        <a href="contact.html" class="link-arrow">Meer informatie</a>
+      </div>
+    </div>
+
+    <!-- Opvoedend boksen -->
+    <div class="service-detail-card" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/boksen/840/640" alt="Opvoedend boksen" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <p class="label">Energie en discipline</p>
+        <h3>Opvoedend boksen</h3>
+        <p>Boksen als middel voor persoonlijke groei. Niet om te vechten, maar om discipline, zelfbeheersing en doorzettingsvermogen te ontwikkelen. Een bewezen aanpak voor jongeren en volwassenen.</p>
+        <ul class="sdc-list">
+          <li>Discipline en zelfbeheersing als fundament</li>
+          <li>Omgaan met frustratie en agressie op een positieve manier</li>
+          <li>Lichamelijke fitheid en mentale weerbaarheid</li>
+          <li>Groepsgevoel en wederzijds respect</li>
+        </ul>
+        <a href="contact.html" class="link-arrow">Meer informatie</a>
+      </div>
+    </div>
+
+    <!-- Coming soon: Boerderij -->
+    <div class="coming-soon-card" data-reveal>
+      <div>
+        <div class="cs-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Binnenkort beschikbaar
+        </div>
+        <h3>Dagbesteding op de boerderij</h3>
+        <p>In de nabije toekomst biedt Breddels Hulpverlening ook dagbesteding aan op een boerderij. Werken met dieren en natuur in een rustige, groene omgeving — voor wie dat extra houvast zoekt.</p>
+        <p style="margin-top:12px">Wil je op de hoogte blijven wanneer dit beschikbaar komt? Neem contact met ons op.</p>
+        <a href="contact.html" class="link-arrow" style="margin-top:20px; display:inline-flex">Houd me op de hoogte</a>
+      </div>
+      <div class="cs-photo">
+        <img src="https://picsum.photos/seed/boerderij/700/480" alt="Boerderij dagbesteding" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="label" data-reveal>Samen kijken wat past</p>
+    <h2 data-reveal data-reveal-delay="1">Welke begeleiding past bij jou?</h2>
+    <p data-reveal data-reveal-delay="2">Twijfel je welk aanbod het beste bij jou past? We denken graag mee. Een kennismakingsgesprek is altijd vrijblijvend.</p>
+    <div class="cta-actions" data-reveal data-reveal-delay="3">
+      <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
+      <a href="wie-zijn-we.html" class="btn btn-outline">Wie zijn we</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="Logo.png" alt="Breddels Hulpverlening" />
+        <p>Ontvang updates over onze diensten en activiteiten.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Voer je e-mailadres in" />
+          <button type="submit">Inschrijven</button>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigatie</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="wie-zijn-we.html">Wie zijn we</a></li>
+          <li><a href="aanbod.html">Aanbod</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Aanbod</h5>
+        <ul>
+          <li><a href="aanbod.html">Ambulante begeleiding</a></li>
+          <li><a href="aanbod.html">Dagbesteding</a></li>
+          <li><a href="aanbod.html">Paardencoaching</a></li>
+          <li><a href="aanbod.html">Opvoedend boksen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Volg ons</h5>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </span>
+            Facebook
+          </a>
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </span>
+            Instagram
+          </a>
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
+      <div class="footer-legal">
+        <a href="#">Privacybeleid</a>
+        <a href="#">Gebruiksvoorwaarden</a>
+        <a href="#">Cookie-instellingen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+</script>
+
+</body>
+</html>

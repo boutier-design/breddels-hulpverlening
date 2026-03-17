@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wie zijn we – Breddels Hulpverlening</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ─────────────────────────────── */
+    :root {
+      --navy:       #1B3A6B;
+      --blue:       #2D5FA0;
+      --mid-blue:   #4A7EBD;
+      --light-blue: #7AAECF;
+      --pale:       #EBF3FA;
+      --pale-2:     #F4F8FC;
+      --white:      #FFFFFF;
+      --text:       #1E2B3C;
+      --muted:      #5A6E84;
+      --border:     #D0E2F0;
+      --radius:     10px;
+      --radius-lg:  18px;
+      --shadow:     0 4px 24px rgba(27,58,107,.10);
+      --shadow-sm:  0 2px 10px rgba(27,58,107,.08);
+    }
+
+    /* ─── Reset ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Typography ─────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.25;
+      color: var(--navy);
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; }
+    p  { line-height: 1.75; color: var(--muted); font-size: .975rem; }
+    .label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid-blue);
+    }
+
+    /* ─── Layout ─────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+
+    /* ─── Buttons ────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all .2s ease;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+    .btn-primary:hover { background: var(--navy); border-color: var(--navy); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.7);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--border);
+      padding: 10px 22px;
+    }
+    .btn-ghost:hover { background: var(--pale); }
+    .btn-sm { padding: 9px 20px; font-size: .85rem; }
+
+    /* ─── Nav ────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 32px;
+    }
+    .nav-logo img { height: 48px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-links a {
+      padding: 8px 14px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--pale); color: var(--navy); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; background: var(--pale); }
+    .nav-cta { margin-left: 8px; }
+
+    /* ─── Page Hero ──────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .page-hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .page-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11,28,60,.82) 0%, rgba(27,58,107,.65) 60%, rgba(45,95,160,.45) 100%);
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero-content { max-width: 640px; padding: 56px 0; }
+    .page-hero-content .label { color: rgba(255,255,255,.65); margin-bottom: 12px; }
+    .page-hero-content h1 { color: var(--white); margin-bottom: 16px; }
+    .page-hero-content p  { color: rgba(255,255,255,.78); font-size: 1.05rem; max-width: 480px; }
+
+    /* ─── Breadcrumb ──────────────────────────── */
+    .breadcrumb {
+      background: var(--pale-2);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .breadcrumb-inner a { color: var(--blue); }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* ─── Mission ────────────────────────────── */
+    .mission { background: var(--white); }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .mission-text .label { margin-bottom: 12px; }
+    .mission-text h2 { margin-bottom: 20px; }
+    .mission-text p  { margin-bottom: 16px; }
+    .mission-text p:last-of-type { margin-bottom: 32px; }
+    .mission-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 460px;
+      box-shadow: var(--shadow);
+    }
+    .mission-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── Values ─────────────────────────────── */
+    .values { background: var(--pale); }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .label { margin-bottom: 10px; }
+    .section-header h2  { margin-bottom: 14px; }
+    .section-header p   { max-width: 480px; margin: 0 auto; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .value-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .vc-icon {
+      width: 48px; height: 48px;
+      background: var(--pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .vc-icon svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; }
+    .value-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .value-card p  { font-size: .9rem; }
+
+    /* ─── Team ───────────────────────────────── */
+    .team { background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 8px;
+    }
+    .team-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .team-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .team-card-photo {
+      height: 280px;
+      overflow: hidden;
+    }
+    .team-card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .team-card:hover .team-card-photo img { transform: scale(1.04); }
+    .team-card-body {
+      padding: 22px 24px 26px;
+      background: var(--white);
+    }
+    .team-card-body h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .team-role {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--mid-blue);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .team-card-body p { font-size: .88rem; }
+
+    /* ─── Approach ───────────────────────────── */
+    .approach { background: var(--pale-2); }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .approach-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .approach-step {
+      display: flex;
+      gap: 20px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .step-body h4 { font-size: 1rem; margin-bottom: 6px; color: var(--navy); }
+    .step-body p  { font-size: .9rem; }
+    .approach-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 480px;
+      box-shadow: var(--shadow);
+    }
+    .approach-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── CTA banner ─────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-banner .label { color: rgba(255,255,255,.55); margin-bottom: 12px; }
+    .cta-banner h2 { color: var(--white); margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,.72); max-width: 460px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Footer ─────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 64px 0 0;
+      color: rgba(255,255,255,.7);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand img { height: 52px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand p { font-size: .88rem; margin-bottom: 24px; }
+    .newsletter-form {
+      display: flex;
+      border-radius: 50px;
+      overflow: hidden;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 11px 18px;
+      border: none;
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      font-family: inherit;
+      font-size: .85rem;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
+    .newsletter-form button {
+      padding: 11px 18px;
+      background: var(--mid-blue);
+      color: var(--white);
+      border: none;
+      font-family: inherit;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--light-blue); color: var(--navy); }
+    .footer-col h5 {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 20px;
+    }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: .9rem;
+      color: rgba(255,255,255,.7);
+      transition: color .15s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .social-links { display: flex; flex-direction: column; gap: 10px; }
+    .social-link {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .9rem; color: rgba(255,255,255,.7); transition: color .15s;
+    }
+    .social-link:hover { color: var(--white); }
+    .social-icon {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .social-icon svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-size: .82rem; color: rgba(255,255,255,.35); flex-wrap: wrap;
+    }
+    .footer-bottom a { color: rgba(255,255,255,.35); transition: color .15s; }
+    .footer-bottom a:hover { color: rgba(255,255,255,.7); }
+    .footer-legal { display: flex; gap: 20px; }
+
+    /* ─── Scroll reveal ──────────────────────── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-reveal-delay="1"] { transition-delay: .1s; }
+    [data-reveal-delay="2"] { transition-delay: .2s; }
+    [data-reveal-delay="3"] { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="Breddels Hulpverlening" />
+    </a>
+    <div class="nav-links">
+      <a href="wie-zijn-we.html" class="active">Wie zijn we</a>
+      <a href="aanbod.html">Aanbod</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE HERO
+═══════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://picsum.photos/seed/teambreddels/1400/600" alt="" />
+  </div>
+  <div class="container">
+    <div class="page-hero-content">
+      <p class="label">Ons verhaal</p>
+      <h1>Wie zijn we</h1>
+      <p>Warm, persoonlijk en professioneel. We geloven in mensen en in de kracht van echte aandacht. Leer ons kennen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Wie zijn we</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     MISSION
+═══════════════════════════════════════════ -->
+<section class="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-text" data-reveal>
+        <p class="label">Onze missie</p>
+        <h2>Hulpverlening die verder gaat</h2>
+        <p>Breddels Hulpverlening biedt begeleiding en ondersteuning aan jongvolwassenen en volwassenen met psychiatrische problemen of een verstandelijke beperking. We gaan uit van wat iemand kán, niet van wat iemand níet kan.</p>
+        <p>We werken vanuit echte betrokkenheid. Onze begeleiders nemen de tijd om jou te leren kennen: je achtergrond, je wensen en je doelen. Samen werken we stap voor stap aan een betere toekomst, op jouw tempo.</p>
+        <p>Of je nu zelf hulp zoekt, een familielid bent of werkt binnen een zorginstelling of gemeente — bij ons ben je welkom. We staan laagdrempelig open voor iedereen die een vraag heeft.</p>
+        <a href="contact.html" class="btn btn-primary">Neem contact op</a>
+      </div>
+      <div class="mission-photo" data-reveal data-reveal-delay="2">
+        <img src="https://picsum.photos/seed/missiebreddels/700/920" alt="Begeleiding op maat" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     VALUES
+═══════════════════════════════════════════ -->
+<section class="values">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">Waar we voor staan</p>
+      <h2>Onze kernwaarden</h2>
+      <p>Alles wat we doen is gebaseerd op deze drie pijlers. Ze bepalen hoe we werken en hoe we met jou omgaan.</p>
+    </div>
+    <div class="values-grid">
+
+      <div class="value-card" data-reveal data-reveal-delay="1">
+        <div class="vc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3>Warmte en veiligheid</h3>
+        <p>We zorgen voor een veilige omgeving waarin jij jezelf kunt zijn. Zonder oordeel, met oprechte aandacht. Jij bepaalt het tempo.</p>
+      </div>
+
+      <div class="value-card" data-reveal data-reveal-delay="2">
+        <div class="vc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </div>
+        <h3>Persoonlijke aanpak</h3>
+        <p>Geen standaardmethodieken, maar maatwerk. We kijken wie jij bent en wat jij nodig hebt. Jouw verhaal staat centraal.</p>
+      </div>
+
+      <div class="value-card" data-reveal data-reveal-delay="3">
+        <div class="vc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h3>Professionele kwaliteit</h3>
+        <p>Ons team is opgeleid en ervaren. We blijven leren en verbeteren, zodat we jou de beste begeleiding kunnen bieden.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     TEAM
+═══════════════════════════════════════════ -->
+<section class="team">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">De mensen achter Breddels</p>
+      <h2>Ons team</h2>
+      <p>Gedreven professionals die met hart en ziel werken aan jouw welzijn.</p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card" data-reveal data-reveal-delay="1">
+        <div class="team-card-photo">
+          <img src="https://picsum.photos/seed/teamlid1/600/560" alt="Teamlid" />
+        </div>
+        <div class="team-card-body">
+          <h3>Naam volgt</h3>
+          <p class="team-role">Oprichter &amp; Begeleider</p>
+          <p>Jarenlange ervaring in de zorg en gedreven door persoonlijke betrokkenheid bij elke cliënt.</p>
+        </div>
+      </div>
+
+      <div class="team-card" data-reveal data-reveal-delay="2">
+        <div class="team-card-photo">
+          <img src="https://picsum.photos/seed/teamlid2/600/560" alt="Teamlid" />
+        </div>
+        <div class="team-card-body">
+          <h3>Naam volgt</h3>
+          <p class="team-role">Ambulant begeleider</p>
+          <p>Gespecialiseerd in begeleiding thuis en in de dagelijkse omgeving van de cliënt.</p>
+        </div>
+      </div>
+
+      <div class="team-card" data-reveal data-reveal-delay="3">
+        <div class="team-card-photo">
+          <img src="https://picsum.photos/seed/teamlid3/600/560" alt="Teamlid" />
+        </div>
+        <div class="team-card-body">
+          <h3>Naam volgt</h3>
+          <p class="team-role">Trainer &amp; Coach</p>
+          <p>Verantwoordelijk voor paardencoaching en opvoedend boksen — unieke trajecten met bewezen effect.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     APPROACH
+═══════════════════════════════════════════ -->
+<section class="approach">
+  <div class="container">
+    <div class="approach-grid">
+      <div data-reveal>
+        <p class="label" style="margin-bottom:12px">Hoe wij werken</p>
+        <h2 style="margin-bottom:36px">Van kennismaking tot begeleiding</h2>
+        <div class="approach-steps">
+          <div class="approach-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Eerste contact</h4>
+              <p>Je neemt contact op — via telefoon, mail of formulier. We reageren snel en persoonlijk, zonder wachtrijen of ingewikkelde procedures.</p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Kennismaking en intake</h4>
+              <p>We plannen een rustig gesprek om jou en je situatie beter te leren kennen. Samen kijken we wat je nodig hebt en wat wij kunnen bieden.</p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Plan op maat</h4>
+              <p>Op basis van de intake stellen we samen een begeleidingsplan op. Jij hebt inspraak op elke stap.</p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Begeleiding en groei</h4>
+              <p>De begeleiding start en we evalueren regelmatig. We passen aan waar nodig en vieren de stappen die je zet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="approach-photo" data-reveal data-reveal-delay="2">
+        <img src="https://picsum.photos/seed/aanpakbreddels/700/960" alt="Onze aanpak" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="label" data-reveal>Klaar om de eerste stap te zetten?</p>
+    <h2 data-reveal data-reveal-delay="1">We staan voor je klaar</h2>
+    <p data-reveal data-reveal-delay="2">Een gesprek is altijd vrijblijvend. Neem contact op en we kijken samen wat we voor je kunnen betekenen.</p>
+    <div class="cta-actions" data-reveal data-reveal-delay="3">
+      <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
+      <a href="aanbod.html" class="btn btn-outline">Bekijk ons aanbod</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="Logo.png" alt="Breddels Hulpverlening" />
+        <p>Ontvang updates over onze diensten en activiteiten.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Voer je e-mailadres in" />
+          <button type="submit">Inschrijven</button>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigatie</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="wie-zijn-we.html">Wie zijn we</a></li>
+          <li><a href="aanbod.html">Aanbod</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Aanbod</h5>
+        <ul>
+          <li><a href="aanbod.html">Ambulante begeleiding</a></li>
+          <li><a href="aanbod.html">Dagbesteding</a></li>
+          <li><a href="aanbod.html">Paardencoaching</a></li>
+          <li><a href="aanbod.html">Opvoedend boksen</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Volg ons</h5>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </span>
+            Facebook
+          </a>
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </span>
+            Instagram
+          </a>
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
+      <div class="footer-legal">
+        <a href="#">Privacybeleid</a>
+        <a href="#">Gebruiksvoorwaarden</a>
+        <a href="#">Cookie-instellingen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+</script>
+
+</body>
+</html>
