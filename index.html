@@ -839,11 +839,13 @@
     <h2 data-reveal>Neem contact met ons op</h2>
     <p data-reveal data-reveal-delay="1">Een afspraak maken is eenvoudig. We nemen graag de tijd voor je.</p>
     <div data-reveal data-reveal-delay="2">
-      <div class="contact-form">
-        <input type="tel" placeholder="Je telefoonnummer" />
+      <form id="belOnsForm" class="contact-form" action="https://formspree.io/f/mojkpdar" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Terugbelverzoek via website" />
+        <input type="tel" name="telefoonnummer" placeholder="Je telefoonnummer" required />
         <button type="submit">Bel ons</button>
-      </div>
-      <p class="contact-note">We behandelen je gegevens vertrouwelijk en volgens onze privacyrichtlijnen.</p>
+      </form>
+      <p class="contact-note" id="belOnsNote">We behandelen je gegevens vertrouwelijk en volgens onze privacyrichtlijnen.</p>
+      <p class="contact-note" id="belOnsSuccess" style="display:none;color:#a8d8a8;font-weight:600;">Bedankt! We bellen je zo snel mogelijk terug.</p>
     </div>
   </div>
 </section>
@@ -966,6 +968,34 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow =
       window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+
+  /* Terugbelverzoek */
+  document.getElementById('belOnsForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Versturen…';
+    try {
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('belOnsNote').style.display = 'none';
+        document.getElementById('belOnsSuccess').style.display = 'block';
+      } else {
+        alert('Er is iets misgegaan. Probeer het opnieuw.');
+        btn.disabled = false;
+        btn.textContent = 'Bel ons';
+      }
+    } catch {
+      alert('Er is iets misgegaan. Controleer je internetverbinding.');
+      btn.disabled = false;
+      btn.textContent = 'Bel ons';
+    }
   });
 </script>
 
