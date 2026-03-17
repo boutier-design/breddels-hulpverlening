@@ -231,6 +231,36 @@
     .value-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
     .value-card p  { font-size: .9rem; }
 
+    /* ─── Team placeholder ───────────────────── */
+    .team-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(180deg, var(--pale) 0%, #c5d8ec 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .team-placeholder svg { width: 62%; height: auto; fill: var(--mid-blue); opacity: .35; margin-bottom: -2px; }
+
+    /* ─── ZZP netwerk card ────────────────────── */
+    .team-card-zzp .team-card-photo {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px; padding: 32px;
+    }
+    .zzp-icon-row { display: flex; gap: 10px; align-items: center; }
+    .zzp-dot {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .zzp-dot svg { width: 18px; height: 18px; stroke: white; fill: none; }
+    .zzp-dot-sm { width: 28px; height: 28px; }
+    .zzp-dot-sm svg { width: 14px; height: 14px; }
+    .zzp-label { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+    .zzp-count { font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700; color: white; line-height: 1; }
+
     /* ─── Team ───────────────────────────────── */
     .team { background: var(--white); }
     .team-grid {
@@ -581,40 +611,58 @@
     <div class="section-header" data-reveal>
       <p class="label">De mensen achter Breddels</p>
       <h2>Ons team</h2>
-      <p>Gedreven professionals die met hart en ziel werken aan jouw welzijn.</p>
+      <p>Gedreven oprichters en een breed netwerk van gecertificeerde ZZP-professionals die met hart en ziel werken aan jouw welzijn.</p>
     </div>
     <div class="team-grid">
 
       <div class="team-card" data-reveal data-reveal-delay="1">
         <div class="team-card-photo">
-          <img src="https://picsum.photos/seed/teamlid1/600/560" alt="Teamlid" />
+          <div class="team-placeholder">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="24"/>
+              <path d="M8 120 Q8 70 50 70 Q92 70 92 120 Z"/>
+            </svg>
+          </div>
         </div>
         <div class="team-card-body">
-          <h3>Naam volgt</h3>
+          <h3>Joost Breddels</h3>
           <p class="team-role">Oprichter &amp; Begeleider</p>
-          <p>Jarenlange ervaring in de zorg en gedreven door persoonlijke betrokkenheid bij elke cliënt.</p>
+          <p>Jarenlange ervaring in de zorg, gedreven door oprechte betrokkenheid bij elke cliënt en geloof in ieders mogelijkheden.</p>
         </div>
       </div>
 
       <div class="team-card" data-reveal data-reveal-delay="2">
         <div class="team-card-photo">
-          <img src="https://picsum.photos/seed/teamlid2/600/560" alt="Teamlid" />
+          <div class="team-placeholder">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="24"/>
+              <path d="M8 120 Q8 70 50 70 Q92 70 92 120 Z"/>
+            </svg>
+          </div>
         </div>
         <div class="team-card-body">
-          <h3>Naam volgt</h3>
-          <p class="team-role">Ambulant begeleider</p>
-          <p>Gespecialiseerd in begeleiding thuis en in de dagelijkse omgeving van de cliënt.</p>
+          <h3>Sheila Breddels</h3>
+          <p class="team-role">Oprichter &amp; Begeleider</p>
+          <p>Warm en persoonlijk in de aanpak, met een scherp oog voor wat cliënten nodig hebben om stappen te zetten.</p>
         </div>
       </div>
 
-      <div class="team-card" data-reveal data-reveal-delay="3">
+      <div class="team-card team-card-zzp" data-reveal data-reveal-delay="3">
         <div class="team-card-photo">
-          <img src="https://picsum.photos/seed/teamlid3/600/560" alt="Teamlid" />
+          <div class="zzp-label" style="margin-bottom:8px">Ons netwerk</div>
+          <div class="zzp-count">20+</div>
+          <div class="zzp-icon-row" style="margin-top:14px">
+            <div class="zzp-dot zzp-dot-sm"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+            <div class="zzp-dot"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+            <div class="zzp-dot zzp-dot-sm"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+            <div class="zzp-dot zzp-dot-sm"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+          </div>
+          <div class="zzp-label" style="margin-top:12px">gecertificeerde ZZP-professionals</div>
         </div>
         <div class="team-card-body">
-          <h3>Naam volgt</h3>
-          <p class="team-role">Trainer &amp; Coach</p>
-          <p>Verantwoordelijk voor paardencoaching en opvoedend boksen — unieke trajecten met bewezen effect.</p>
+          <h3>Ons ZZP-netwerk</h3>
+          <p class="team-role">Gecertificeerde zorgprofessionals</p>
+          <p>Breddels werkt met een zorgvuldig geselecteerd netwerk van meer dan 20 ZZP-professionals. Elk lid is gecertificeerd, ervaren en gedeeld in onze waarden — zodat de kwaliteit altijd gewaarborgd is.</p>
         </div>
       </div>
 
