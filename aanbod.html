@@ -360,10 +360,59 @@
     .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(27,58,107,.5); }
     .whatsapp-fab svg { width: 30px; height: 30px; fill: white; }
 
+    /* ─── Hamburger ──────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: background .15s;
+      flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--pale); }
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── Mobile menu ────────────────────────── */
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      padding: 12px 24px 20px;
+      border-top: 1px solid var(--border);
+      gap: 2px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a:not(.btn) {
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      border-radius: 8px;
+      transition: background .15s;
+    }
+    .nav-mobile a:not(.btn):hover { background: var(--pale); color: var(--navy); }
+    .nav-mobile a.active { color: var(--navy); font-weight: 600; background: var(--pale); }
+    .nav-mobile .btn { margin-top: 8px; justify-content: center; }
+
     /* ─── Responsive ─────────────────────────── */
     @media (max-width: 768px) {
       section { padding: 56px 0; }
       .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
       .page-hero { min-height: 300px; }
       .intro-inner { grid-template-columns: 1fr; gap: 40px; }
       .intro-photo { height: 280px; }
@@ -398,6 +447,15 @@
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="wie-zijn-we.html">Wie zijn we</a>
+    <a href="aanbod.html" class="active">Aanbod</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
   </div>
 </nav>
 
@@ -704,6 +762,22 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  /* ─── Mobile nav ────────────────────────── */
+  const hamburger = document.getElementById('navHamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMobile.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow =
