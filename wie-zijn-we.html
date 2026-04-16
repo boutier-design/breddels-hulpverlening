@@ -101,18 +101,20 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,.95);
+      background: rgba(255,255,255,.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      border-top: 3px solid var(--blue);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 88px;
       gap: 32px;
     }
-    .nav-logo img { height: 48px; width: auto; }
+    .nav-logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .nav-logo img { height: 66px; width: auto; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -369,6 +371,11 @@
     }
     .footer-brand img { height: 52px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: .9; }
     .footer-brand p { font-size: .88rem; margin-bottom: 24px; }
+    .dekra-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 14px; background: rgba(0,100,55,.18); border: 1px solid rgba(0,150,70,.4); border-radius: 10px; color: rgba(255,255,255,.82); font-size: .82rem; text-decoration: none; transition: border-color .2s; }
+    .dekra-badge:hover { border-color: rgba(0,150,70,.7); color: var(--white); }
+    .dekra-circle { width: 36px; height: 36px; background: #006437; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: .6rem; font-weight: 800; letter-spacing: .04em; flex-shrink: 0; text-align: center; line-height: 1.2; }
+    .dekra-badge strong { color: rgba(255,255,255,.92); display: block; }
+    .dekra-badge small { color: rgba(255,255,255,.5); font-size: .72rem; }
     .newsletter-form {
       display: flex;
       border-radius: 50px;
@@ -605,11 +612,12 @@
   <div class="container">
     <div class="mission-grid">
       <div class="mission-text" data-reveal>
-        <p class="label">Onze missie</p>
-        <h2>Hulpverlening die verder gaat</h2>
-        <p>Breddels Hulpverlening biedt begeleiding en ondersteuning aan jongvolwassenen en volwassenen met psychiatrische problemen of een verstandelijke beperking. We gaan uit van wat iemand kán, niet van wat iemand níet kan.</p>
-        <p>We werken vanuit echte betrokkenheid. Onze begeleiders nemen de tijd om jou te leren kennen: je achtergrond, je wensen en je doelen. Samen werken we stap voor stap aan een betere toekomst, op jouw tempo.</p>
-        <p>Of je nu zelf hulp zoekt, een familielid bent of werkt binnen een zorginstelling of gemeente — bij ons ben je welkom. We staan laagdrempelig open voor iedereen die een vraag heeft.</p>
+        <p class="label">Wie zijn wij</p>
+        <h2>Menswaardige ondersteuning die aansluit bij wie jij bent</h2>
+        <p>Breddels Hulpverlening VOF is ontstaan doordat het bieden van begeleiding verweven zit in onze familie. Wij hebben jarenlange werkervaring met intensieve zorgvragen. Wij bieden menswaardige ondersteuning dat aansluit bij dat wat jij daadwerkelijk nodig hebt.</p>
+        <p>Onze kernwaardes zijn <strong>Samen, Onvoorwaardelijk, Vastberaden, Daadkrachtig</strong> en <strong>Effectief</strong>. Door veelal werkzaam te zijn geweest binnen multidisciplinaire teams beschikt Breddels Hulpverlening over een groot netwerk van coaches en hulpverleners.</p>
+        <p><strong>Missie:</strong> we sluiten aan op de behoeftes van jou en kijken vanaf het begin wat er daadwerkelijk nodig is om op zijn of haar niveau mee te kunnen draaien in de maatschappij.</p>
+        <p><strong>Visie:</strong> De ondersteuning is erop gericht dat eenieder, zoveel als mogelijk, de regie kan nemen over zijn of haar leven.</p>
         <a href="contact.html" class="btn btn-primary">Neem contact op</a>
       </div>
       <div class="mission-photo" data-reveal data-reveal-delay="2">
@@ -669,7 +677,7 @@
     <div class="section-header" data-reveal>
       <p class="label">De mensen achter Breddels</p>
       <h2>Ons team</h2>
-      <p>Gedreven oprichters en een breed netwerk van gecertificeerde ZZP-professionals die met hart en ziel werken aan jouw welzijn.</p>
+      <p>Gedreven oprichters en gediplomeerde begeleiders die hun ervaring en kennis koppelen aan het werken vanuit het hart.</p>
     </div>
     <div class="team-grid">
 
@@ -685,7 +693,7 @@
         <div class="team-card-body">
           <h3>Joost Breddels</h3>
           <p class="team-role">Oprichter &amp; Begeleider</p>
-          <p>Jarenlange ervaring in de zorg, gedreven door oprechte betrokkenheid bij elke cliënt en geloof in ieders mogelijkheden.</p>
+          <p>Jarenlange ervaring in de intensieve zorg, gedreven door oprechte betrokkenheid in jou en de focus op iemands kwaliteiten en mogelijkheden. Met de voeten in de klei omdat de binding met de praktijk zorgt voor persoonlijke groei en ook die van onze lerende organisatie. Alleen kan je iets, maar samen bereiken we meer.</p>
         </div>
       </div>
 
@@ -700,8 +708,8 @@
         </div>
         <div class="team-card-body">
           <h3>Sheila Breddels</h3>
-          <p class="team-role">Oprichter &amp; Begeleider</p>
-          <p>Warm en persoonlijk in de aanpak, met een scherp oog voor wat cliënten nodig hebben om stappen te zetten.</p>
+          <p class="team-role">Oprichter, Begeleider &amp; Paardencoach</p>
+          <p>Jarenlange ervaring in de intensieve zorg, gedreven door oprechte betrokkenheid in jou en de focus op iemands kwaliteiten en mogelijkheden. Met de voeten in de klei omdat de binding met de praktijk zorgt voor persoonlijke groei en ook die van onze lerende organisatie. Alleen kan je iets, maar samen bereiken we meer.</p>
         </div>
       </div>
 
@@ -778,6 +786,52 @@
 
 
 <!-- ══════════════════════════════════════════
+     NETWERK
+═══════════════════════════════════════════ -->
+<section style="background: var(--pale); padding: 72px 0;">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-text" data-reveal>
+        <p class="label">Persoonlijk netwerk</p>
+        <h2>Het netwerk om jou heen</h2>
+        <p>Ieder mens is een sociaal wezen en vindt het contact met anderen fijn. Soms heeft iemand hier (tijdelijk) hulp bij nodig om dit contact te vinden, te onderhouden en of te herstellen. Breddels Hulpverlening gelooft erin dat een meedenkend en actief betrokken netwerk veel mogelijkheden biedt voor de antwoorden op de hulpvragen.</p>
+        <p>Soms is een netwerk al zeer intensief betrokken en is het misschien fijn dat een ouder weer ouder kan zijn — en nemen wij in overeenstemming met elkaar juist de ondersteunende rol uit handen.</p>
+        <p>Indien mogelijk en in overeenstemming met jou, geloven wij erin om bij de ondersteuning het netwerk om jou heen in te schakelen. Wij kunnen met jouw netwerk (intensief) samenwerken en een coachende rol aannemen om ervoor te zorgen dat jouw kwaliteit van leven wordt vergroot.</p>
+        <a href="contact.html" class="btn btn-primary">Neem contact op</a>
+      </div>
+      <div class="mission-photo" data-reveal data-reveal-delay="2">
+        <img src="https://picsum.photos/seed/netwerk-breddels/700/920" alt="Netwerk en samenwerking" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SAMENWERKINGEN
+═══════════════════════════════════════════ -->
+<section style="background: var(--white); padding: 72px 0;">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">Ons netwerk</p>
+      <h2>Samenwerkingsverbanden</h2>
+      <p>Wij werken samen met een breed netwerk aan gediplomeerde begeleiders. Het is binnen de hulpverlening essentieel dat we als begeleiders elkaar kennen, elkaar doen laten ontwikkelen en we elkaar vinden in dezelfde waardes. Dit is dan ook kenmerkend voor al onze samenwerkingen en collega's.</p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:16px;" data-reveal data-reveal-delay="1">
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">Aemosa</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">DagbestedingPlus</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">Stichting Klimkoord</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">De Therapiehoek</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">Gemeente Leiden</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">Katwijk</span>
+      <span style="padding:10px 20px; background:var(--pale); border-radius:50px; font-size:.9rem; font-weight:500; color:var(--navy);">de Bollenstreek</span>
+    </div>
+    <p style="text-align:center; margin-top:28px; font-size:.9rem; color:var(--muted);" data-reveal data-reveal-delay="2">Mocht er een crisissituatie zijn binnen de instelling waar u werkt, bel gerust om samen te kijken of we je van dienst kunnen zijn in de vorm van een (tijdelijke) samenwerking.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
      CTA
 ═══════════════════════════════════════════ -->
 <section class="cta-banner">
@@ -808,6 +862,13 @@
           <p><a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a></p>
           <p class="footer-kvk">KVK: 85659398</p>
         </div>
+        <div class="dekra-badge" title="DEKRA gecertificeerd – HKZ Kleine organisaties">
+          <span class="dekra-circle">DEKRA</span>
+          <span>
+            <strong>HKZ gecertificeerd</strong>
+            <small>Kleine organisaties</small>
+          </span>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -823,10 +884,11 @@
       <div class="footer-col">
         <h5>Aanbod</h5>
         <ul>
-          <li><a href="aanbod.html">Ambulante begeleiding</a></li>
-          <li><a href="aanbod.html">Dagbesteding</a></li>
-          <li><a href="aanbod.html">Paardencoaching</a></li>
-          <li><a href="aanbod.html">Opvoedend boksen</a></li>
+          <li><a href="aanbod.html#ambulante-begeleiding">Ambulante begeleiding</a></li>
+          <li><a href="aanbod.html#dagbesteding">Dagbesteding</a></li>
+          <li><a href="aanbod.html#paardencoaching">Paardencoaching</a></li>
+          <li><a href="aanbod.html#opvoedend-boksen">Opvoedend boksen</a></li>
+          <li><a href="aanbod.html#specialistische-trajecten">Specialistische trajecten</a></li>
         </ul>
       </div>
 
@@ -845,11 +907,11 @@
             </span>
             Instagram
           </a>
-          <a href="#" class="social-link">
+          <a href="https://wa.me/31653317203" target="_blank" rel="noopener" class="social-link">
             <span class="social-icon">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </span>
-            LinkedIn
+            WhatsApp
           </a>
         </div>
       </div>
@@ -857,9 +919,9 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
+      <span>© 2026 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
       <div class="footer-legal">
-        <a href="#">Privacybeleid</a>
+        <a href="privacy.html">Privacybeleid</a>
         <a href="#">Gebruiksvoorwaarden</a>
         <a href="#">Cookie-instellingen</a>
       </div>

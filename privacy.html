@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy &amp; Medezeggenschap – Breddels Hulpverlening</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ─────────────────────────────── */
+    :root {
+      --navy:       #1B3A6B;
+      --blue:       #2D5FA0;
+      --mid-blue:   #4A7EBD;
+      --light-blue: #7AAECF;
+      --pale:       #EBF3FA;
+      --pale-2:     #F4F8FC;
+      --white:      #FFFFFF;
+      --text:       #1E2B3C;
+      --muted:      #5A6E84;
+      --border:     #D0E2F0;
+      --radius:     10px;
+      --radius-lg:  18px;
+      --shadow:     0 4px 24px rgba(27,58,107,.10);
+      --shadow-sm:  0 2px 10px rgba(27,58,107,.08);
+    }
+
+    /* ─── Reset ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Typography ─────────────────────────── */
+    h1, h2, h3, h4 { font-family: 'Lora', Georgia, serif; line-height: 1.25; color: var(--navy); }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; }
+    p  { line-height: 1.75; color: var(--muted); font-size: .975rem; }
+    .label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mid-blue); }
+
+    /* ─── Layout ─────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+
+    /* ─── Buttons ────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 50px; font-size: .9rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all .2s ease; }
+    .btn-primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .btn-primary:hover { background: var(--navy); border-color: var(--navy); }
+    .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,.7); }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+    .btn-sm { padding: 9px 20px; font-size: .85rem; }
+
+    /* ─── Nav ────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); border-top: 3px solid var(--blue); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 32px; }
+    .nav-logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .nav-logo img { height: 66px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { padding: 8px 14px; font-size: .9rem; font-weight: 500; color: var(--text); border-radius: 6px; transition: background .15s; }
+    .nav-links a:hover { background: var(--pale); color: var(--navy); }
+    .nav-cta { margin-left: 8px; }
+
+    /* ─── Mobile nav ────────────────────────── */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .25s ease; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; flex-direction: column; gap: 4px; padding: 16px 24px 20px; border-top: 1px solid var(--border); background: rgba(255,255,255,.98); }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { padding: 10px 14px; border-radius: 8px; font-size: .95rem; font-weight: 500; color: var(--text); transition: background .15s; }
+    .nav-mobile a:hover { background: var(--pale); }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ─── Page Hero ──────────────────────────── */
+    .page-hero { position: relative; min-height: 340px; display: flex; align-items: center; overflow: hidden; padding-top: 108px; padding-bottom: 36px; }
+    .page-hero-bg { position: absolute; inset: 0; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .page-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(11,28,60,.82) 0%, rgba(27,58,107,.65) 60%, rgba(45,95,160,.45) 100%); }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero-content { max-width: 640px; }
+    .page-hero-content .label { color: rgba(255,255,255,.65); margin-bottom: 12px; }
+    .page-hero-content h1 { color: var(--white); margin-bottom: 16px; }
+    .page-hero-content p  { color: rgba(255,255,255,.78); font-size: 1.05rem; max-width: 480px; }
+
+    /* ─── Breadcrumb ─────────────────────────── */
+    .breadcrumb { background: var(--pale-2); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .breadcrumb-inner { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); }
+    .breadcrumb-inner a { color: var(--blue); }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* ─── Content layout ─────────────────────── */
+    .content-layout { display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; }
+    @media (max-width: 860px) { .content-layout { grid-template-columns: 1fr; } }
+
+    /* ─── Sticky sidebar nav ─────────────────── */
+    .toc { position: sticky; top: 96px; }
+    .toc h5 { font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .toc ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc ul li a { display: block; padding: 7px 14px; border-left: 2px solid var(--border); font-size: .88rem; color: var(--muted); transition: all .15s; border-radius: 0 6px 6px 0; }
+    .toc ul li a:hover { color: var(--navy); border-left-color: var(--blue); background: var(--pale); }
+
+    /* ─── Privacy content ────────────────────── */
+    .privacy-body h2 { font-size: 1.35rem; margin-top: 48px; margin-bottom: 14px; padding-top: 48px; border-top: 1px solid var(--border); }
+    .privacy-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .privacy-body p { margin-bottom: 16px; }
+    .privacy-body p:last-child { margin-bottom: 0; }
+    .privacy-body ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .privacy-body ul li { font-size: .95rem; line-height: 1.75; color: var(--muted); }
+    .privacy-body a { color: var(--blue); text-decoration: underline; }
+    .privacy-body a:hover { color: var(--navy); }
+    .privacy-intro { background: var(--pale); border-left: 4px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px 24px; margin-bottom: 36px; }
+    .privacy-intro p { margin: 0; font-size: .92rem; }
+
+    /* ─── CTA banner ─────────────────────────── */
+    .cta-banner { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); text-align: center; padding: 80px 0; }
+    .cta-banner .label { color: rgba(255,255,255,.55); margin-bottom: 12px; }
+    .cta-banner h2 { color: var(--white); margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,.72); max-width: 460px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Footer ─────────────────────────────── */
+    footer { background: var(--navy); padding: 64px 0 0; color: rgba(255,255,255,.7); }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .footer-brand img { height: 52px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: .9; }
+    .footer-brand p { font-size: .88rem; margin-bottom: 24px; }
+    .dekra-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 14px; background: rgba(0,100,55,.18); border: 1px solid rgba(0,150,70,.4); border-radius: 10px; color: rgba(255,255,255,.82); font-size: .82rem; }
+    .dekra-circle { width: 36px; height: 36px; background: #006437; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: .6rem; font-weight: 800; letter-spacing: .04em; flex-shrink: 0; text-align: center; line-height: 1.2; }
+    .dekra-badge strong { color: rgba(255,255,255,.92); display: block; }
+    .dekra-badge small { color: rgba(255,255,255,.5); font-size: .72rem; }
+    .footer-col h5 { font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: .9rem; color: rgba(255,255,255,.7); transition: color .15s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .social-links { display: flex; flex-direction: column; gap: 10px; }
+    .social-link { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: rgba(255,255,255,.7); transition: color .15s; }
+    .social-link:hover { color: var(--white); }
+    .social-icon { width: 32px; height: 32px; background: rgba(255,255,255,.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .social-icon svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: .82rem; color: rgba(255,255,255,.35); flex-wrap: wrap; }
+    .footer-address a { color: rgba(255,255,255,.7); }
+    .footer-address a:hover { color: var(--white); }
+    .footer-kvk { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 6px; }
+    .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-legal a { color: rgba(255,255,255,.35); transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.7); }
+
+    /* ─── Scroll reveal ──────────────────────── */
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-reveal-delay="1"] { transition-delay: .1s; }
+    [data-reveal-delay="2"] { transition-delay: .2s; }
+
+    /* ─── WhatsApp FAB ───────────────────────── */
+    .whatsapp-fab { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.45); transition: transform .2s ease, box-shadow .2s ease; }
+    .whatsapp-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
+    .whatsapp-fab svg { width: 28px; height: 28px; fill: white; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo.png" alt="Breddels Hulpverlening" />
+    </a>
+    <div class="nav-links">
+      <a href="wie-zijn-we.html">Wie zijn we</a>
+      <a href="aanbod.html">Aanbod</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="wie-zijn-we.html">Wie zijn we</a>
+    <a href="aanbod.html">Aanbod</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     PAGE HERO
+═══════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://picsum.photos/seed/privacy-breddels/1400/600" alt="" />
+  </div>
+  <div class="container">
+    <div class="page-hero-content">
+      <p class="label">Informatie &amp; rechten</p>
+      <h1>Privacy &amp; Medezeggenschap</h1>
+      <p>Hoe wij omgaan met uw persoonsgegevens, uw rechten als cliënt en hoe u invloed heeft op onze hulpverlening.</p>
+    </div>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Privacy &amp; Medezeggenschap</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PRIVACY CONTENT
+═══════════════════════════════════════════ -->
+<section style="background: var(--white); padding: 72px 0;">
+  <div class="container">
+    <div class="content-layout">
+
+      <!-- Sticky inhoudsopgave -->
+      <nav class="toc" aria-label="Inhoudsopgave">
+        <h5>Op deze pagina</h5>
+        <ul>
+          <li><a href="#privacy">ePrivacyverklaring</a></li>
+          <li><a href="#dienstverlening">Nodig voor dienstverlening</a></li>
+          <li><a href="#wettelijk">Wettelijke verplichtingen</a></li>
+          <li><a href="#persoonsgegevens">Persoonsgegevens</a></li>
+          <li><a href="#plichten">Plichten</a></li>
+          <li><a href="#rechten">Uw rechten</a></li>
+          <li><a href="#klachten">Klachtenregeling</a></li>
+          <li><a href="#medezeggenschap">Medezeggenschapsregeling</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hoofdtekst -->
+      <div class="privacy-body" data-reveal>
+
+        <div class="privacy-intro">
+          <p>Breddels Hulpverlening verwerkt medische gegevens van zijn cliënten. Deze gegevens zijn gevoelig en kwetsbaar en daarom is de privacy van onze cliënten belangrijk. In de onderstaande verklaring kan de cliënt lezen welke gegevens wij verwerken en waarvoor. Daarbij vermelden wij welke rechten de cliënt heeft.</p>
+        </div>
+
+        <h2 id="privacy">ePrivacyverklaring</h2>
+        <p>Breddels Hulpverlening hecht grote waarde aan de bescherming van de persoonsgegevens van haar cliënten. Wij handelen in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en andere toepasselijke wet- en regelgeving op het gebied van privacy.</p>
+
+        <h2 id="dienstverlening">Nodig voor dienstverlening</h2>
+        <p>Breddels Hulpverlening staat voor het leveren van kwalitatieve zorg. Dit is dan ook de reden dat wij persoonsgegevens van u verzamelen. Op deze manier kunnen wij goede hulpverlening leveren, kunnen wij contact met u opnemen en de facturatie verzorgen.</p>
+        <p>Op het moment dat wij andere dienstverleners inschakelen kunnen wij uw gegevens delen. Het delen van uw gegevens doen wij enkel met uw toestemming en we verstrekken alleen de benodigde informatie.</p>
+
+        <h2 id="wettelijk">Wettelijke verplichtingen</h2>
+        <p>Breddels Hulpverlening is verplicht om medische dossiers 15 jaar te bewaren. Als deze wettelijke termijn is verlopen en u bent niet langer cliënt bij ons, worden de gegevens vernietigd. Als u na deze periode nog cliënt blijft bij Breddels Hulpverlening bewaren wij uw gegevens om u in de toekomst van dienst te kunnen zijn.</p>
+        <p>De privacyverklaring geldt voor onze cliënten, bezoekers van onze website en wanneer wij waarnemen voor een collega zorgaanbieder. Breddels Hulpverlening is verantwoordelijk voor het verzamelen, verwerken en gebruiken van uw gegevens.</p>
+
+        <h2 id="persoonsgegevens">Persoonsgegevens</h2>
+        <p>Breddels Hulpverlening definieert persoonsgegevens als gegevens die te herleiden zijn tot een natuurlijk persoon. Bij iedere aanmelding vragen wij de cliënt of verwijzer om een aantal persoonsgegevens. Dit zijn de naam, adres, geboortedatum, telefoonnummer, mailadres en reden van aanmelding. Wanneer de cliënt begeleid wordt, worden deze gegevens vastgelegd in een behandelplan. Dit behandelplan is beveiligd in ons elektronische systeem.</p>
+        <p>Breddels Hulpverlening kan uw gegevens verzamelen, bewaren, raadplegen, gebruiken, met elkaar in verband brengen en verstrekken aan derde partijen die voor Breddels Hulpverlening een dienst uitvoeren. Dit kan Breddels Hulpverlening alleen doen met uw toestemming. Deze toestemming kunt u te allen tijde intrekken. Als u geen toestemming geeft kan Breddels Hulpverlening u niet goed van dienst zijn.</p>
+        <p>Breddels Hulpverlening kan door gebruik te maken van uw gegevens begeleiding bieden. Daarbij kan het zijn dat er onverwachts toch niet goed gaat met de bescherming van uw persoonsgegevens — of wij vermoeden dat dit het geval is. Dan zullen wij direct melding maken bij de Autoriteit Persoonsgegevens. Breddels Hulpverlening brengt u te allen tijde op de hoogte.</p>
+
+        <h2 id="plichten">Plichten</h2>
+        <p>Breddels Hulpverlening heeft een geheimhoudingsplicht en mag niet zomaar informatie delen met anderen. Medewerkers van Breddels Hulpverlening zijn allen verplicht tot geheimhouding.</p>
+        <p>De gegevens van de cliënt worden alleen gedeeld met de cliënt, diegene die bij de hulpverlening betrokken is en of aan degene waarvoor de cliënt toestemming heeft gegeven.</p>
+        <p>Breddels Hulpverlening deelt geen persoonsgegevens met een land buiten de Europese Economische Ruimte.</p>
+
+        <h2 id="rechten">Uw rechten</h2>
+        <p>Als cliënt heeft u het recht om kennis te nemen van de gegevens in uw dossier. U kunt op afspraak uw dossier inzien onder begeleiding van Breddels Hulpverlening. Verder heeft een cliënt recht op een afschrift van zijn of haar dossier. Persoonlijke aantekeningen vallen niet onder het inzagerecht. Gegevens van derden in uw dossier zullen in beginsel onzichtbaar gemaakt worden.</p>
+        <p>Als cliënt heeft u de volgende rechten:</p>
+        <ul>
+          <li>Recht op inzage van uw dossier (op afspraak)</li>
+          <li>Recht op een afschrift van uw dossier</li>
+          <li>Recht op rectificatie van onjuiste persoonsgegevens</li>
+          <li>Recht op aanvulling van uw dossier</li>
+          <li>Recht op verwijdering van uw gegevens (met uitzonderingen)</li>
+          <li>Recht op beperking van de gegevensverwerking</li>
+          <li>Recht op verzet tegen de gegevensverwerking</li>
+          <li>Recht op het verkrijgen van uw gegevens in elektronische vorm</li>
+        </ul>
+        <p>Een cliënt kan zijn of haar gegevens laten verwijderen. Niet in alle gevallen is verwijdering mogelijk. Hierbij moet gelet worden op het aanmerkelijk belang van een ander om de gegevens te bewaren (denk aan een rechtszaak of erfelijkheid) en andere wettelijke voorschriften die zich verzetten tegen vernietiging.</p>
+        <p>Mocht u een beroep willen doen op een van deze rechten, kunt u hiervoor schriftelijk een verzoek indienen door te mailen naar <a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a>.</p>
+
+        <h2 id="klachten">Klachtenregeling</h2>
+        <p>Mocht de cliënt een klacht hebben over de verwerking van zijn of haar persoonsgegevens dan kan de cliënt altijd contact opnemen met Breddels Hulpverlening. Samen met de cliënt zoeken we dan naar een oplossing. Mocht de cliënt zich niet gehoord voelen kan de cliënt een klacht indienen bij de <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
+        <p>Op het moment dat er sprake is van ontevredenheid met betrekking tot de hulpverlening die Breddels Hulpverlening verleent, streven wij ernaar om samen met de cliënt naar een oplossing te zoeken. Onze focus ligt op samen oplossingsgericht denken.</p>
+        <p>Mochten we er samen niet uitkomen, dan kan de cliënt contact opnemen met <a href="https://www.klachtenportaalzorg.nl" target="_blank" rel="noopener">Klachtenportaalzorg</a>.</p>
+
+        <h2 id="medezeggenschap">Medezeggenschapsregeling</h2>
+        <p>Bij Breddels Hulpverlening vinden wij het belangrijk dat jij als cliënt — en jouw netwerk — mee kunt denken over belangrijke zaken die betrekking hebben op onze hulpverlening. Dit betekent dat jij en je netwerk mee kan denken over belangrijke zaken die betrekking hebben over onze hulpverlening.</p>
+        <p>Heb je ideeën, suggesties of wil je je stem laten horen? Neem dan gerust contact met ons op via <a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a> of bel ons op <a href="tel:+31653317203">06-53317203</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="label" data-reveal>Vragen over uw privacy?</p>
+    <h2 data-reveal data-reveal-delay="1">We helpen u graag verder</h2>
+    <p data-reveal data-reveal-delay="2">Heeft u vragen over uw gegevens of wilt u een beroep doen op uw rechten? Neem gerust contact met ons op.</p>
+    <div class="cta-actions" data-reveal data-reveal-delay="3">
+      <a href="contact.html" class="btn btn-primary">Contact opnemen</a>
+      <a href="index.html" class="btn btn-outline">Terug naar home</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="Logo.png" alt="Breddels Hulpverlening" />
+        <div class="footer-address">
+          <p>Dobbeweg 11-N<br>2254 AG Voorschoten</p>
+          <p style="margin-top:8px"><a href="tel:+31653317203">06-53317203</a></p>
+          <p><a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a></p>
+          <p class="footer-kvk">KVK: 85659398</p>
+        </div>
+        <div class="dekra-badge" title="DEKRA gecertificeerd – HKZ Kleine organisaties">
+          <span class="dekra-circle">DEKRA</span>
+          <span>
+            <strong>HKZ gecertificeerd</strong>
+            <small>Kleine organisaties</small>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigatie</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="wie-zijn-we.html">Wie zijn we</a></li>
+          <li><a href="aanbod.html">Aanbod</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Aanbod</h5>
+        <ul>
+          <li><a href="aanbod.html#ambulante-begeleiding">Ambulante begeleiding</a></li>
+          <li><a href="aanbod.html#dagbesteding">Dagbesteding</a></li>
+          <li><a href="aanbod.html#paardencoaching">Paardencoaching</a></li>
+          <li><a href="aanbod.html#opvoedend-boksen">Opvoedend boksen</a></li>
+          <li><a href="aanbod.html#specialistische-trajecten">Specialistische trajecten</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Volg ons</h5>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </span>
+            Facebook
+          </a>
+          <a href="#" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </span>
+            Instagram
+          </a>
+          <a href="https://wa.me/31653317203" target="_blank" rel="noopener" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </span>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacybeleid</a>
+        <a href="#">Gebruiksvoorwaarden</a>
+        <a href="#">Cookie-instellingen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  const hamburger = document.getElementById('navHamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMobile.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+</script>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/31653317203" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp bericht">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body>
+</html>

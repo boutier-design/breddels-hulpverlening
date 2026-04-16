@@ -88,18 +88,20 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,.95);
+      background: rgba(255,255,255,.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      border-top: 3px solid var(--blue);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 88px;
       gap: 32px;
     }
-    .nav-logo img { height: 48px; width: auto; }
+    .nav-logo { display: inline-block; text-decoration: none; line-height: 0; }
+    .nav-logo img { height: 66px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 8px; }
     .nav-links a {
       padding: 8px 14px;
@@ -228,6 +230,7 @@
       align-items: flex-start;
       gap: 10px;
       font-size: .88rem;
+      line-height: 1.75;
       color: var(--muted);
     }
     .sdc-list li::before {
@@ -342,6 +345,11 @@
     .footer-address a { color: rgba(255,255,255,.7); transition: color .15s; }
     .footer-address a:hover { color: var(--white); }
     .footer-kvk { font-size: .78rem !important; color: rgba(255,255,255,.4) !important; margin-top: 12px !important; }
+    .dekra-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 10px 14px; background: rgba(0,100,55,.18); border: 1px solid rgba(0,150,70,.4); border-radius: 10px; color: rgba(255,255,255,.82); font-size: .82rem; text-decoration: none; transition: border-color .2s; }
+    .dekra-badge:hover { border-color: rgba(0,150,70,.7); color: var(--white); }
+    .dekra-circle { width: 36px; height: 36px; background: #006437; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: .6rem; font-weight: 800; letter-spacing: .04em; flex-shrink: 0; text-align: center; line-height: 1.2; }
+    .dekra-badge strong { color: rgba(255,255,255,.92); display: block; }
+    .dekra-badge small { color: rgba(255,255,255,.5); font-size: .72rem; }
 
     /* ─── WhatsApp button ────────────────────── */
     .whatsapp-fab {
@@ -495,7 +503,7 @@
     <div class="intro-inner">
       <div class="intro-text" data-reveal>
         <p class="label">Begeleiding op maat</p>
-        <h2>Voor iedereen die een steuntje in de rug nodig heeft</h2>
+        <h2>Wij bieden diverse vormen van ondersteuning, persoonsgericht ingezet</h2>
         <p>Bij Breddels Hulpverlening bieden we begeleiding aan jongvolwassenen en volwassenen met psychiatrische problematiek of een verstandelijke beperking. We kijken altijd naar wat jij nodig hebt.</p>
         <p>Ons aanbod is breed en persoonlijk. Of het nu gaat om ondersteuning thuis, dagbesteding of een bijzonder traject zoals paardencoaching — we stemmen alles af op jouw unieke situatie.</p>
         <div class="intro-badges">
@@ -537,7 +545,7 @@
     </div>
 
     <!-- Ambulante begeleiding -->
-    <div class="service-detail-card" data-reveal>
+    <div class="service-detail-card" id="ambulante-begeleiding" data-reveal>
       <div class="sdc-photo">
         <img src="https://picsum.photos/seed/caring-home55/840/640" alt="Ambulante begeleiding" />
       </div>
@@ -545,43 +553,28 @@
         <div class="sdc-icon">
           <svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         </div>
-        <p class="label">Begeleiding thuis</p>
+        <p class="label">Begeleiding thuis of op locatie</p>
         <h3>Ambulante begeleiding</h3>
-        <p>Begeleiding in jouw eigen omgeving: thuis, in de wijk of op de plek waar jij je het prettigst voelt. We komen naar jou toe en sluiten aan bij jouw dagelijks leven.</p>
+        <p>Wij bieden begeleiding bij jou thuis dat gericht is op de leefgebieden wonen, werk/opleiding, vrije tijd en zelfzorg. In overleg kan de begeleiding ook bij ons op locatie in Katwijk, Voorschoten, Lisse en Leiden.</p>
+        <p>Na de aanmelding volgt een intakegesprek waarin we de verschillende leefgebieden in kaart brengen. Het plan dat we maken is van jou en in samenwerking met ons tot stand gekomen — gericht op jouw persoonlijke doelen.</p>
         <ul class="sdc-list">
-          <li>Ondersteuning bij dagelijkse activiteiten en zelfredzaamheid</li>
-          <li>Hulp bij administratie, zorg en praktische zaken</li>
-          <li>Begeleiding naar werk, school of dagbesteding</li>
-          <li>Aandacht voor sociale contacten en welzijn</li>
+          <li>Het in kaart brengen van de hulpvragen</li>
+          <li>Het organiseren van de juiste ondersteuning om jou heen</li>
+          <li>Ondersteuning bij administratieve werkzaamheden en of financiën</li>
+          <li>Het onderhouden en of herstellen van een sociaal netwerk</li>
+          <li>Begeleiding bij het krijgen of behouden van een betekenisvolle daginvulling</li>
+          <li>Het ontwikkelen of herstellen van vaardigheden gericht op zelfstandig wonen</li>
+          <li>Het verbinden en samenwerken met betrokken instanties om jou kwaliteit van leven te verbeteren</li>
         </ul>
-        <a href="contact.html" class="link-arrow">Meer informatie</a>
-      </div>
-    </div>
-
-    <!-- Begeleiding op kantoor -->
-    <div class="service-detail-card reverse" data-reveal>
-      <div class="sdc-photo">
-        <img src="https://picsum.photos/seed/office-meeting82/840/640" alt="Begeleiding op kantoor" />
-      </div>
-      <div class="sdc-body">
-        <div class="sdc-icon">
-          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2M5 21H3m4-10h1m4 0h1m-6 4h1m4 0h1"/></svg>
-        </div>
-        <p class="label">Op locatie</p>
-        <h3>Begeleiding op kantoor</h3>
-        <p>Soms is het fijn om even weg te zijn uit je eigen omgeving. Op ons kantoor bieden we een rustige, veilige plek voor gesprekken, planning en begeleiding.</p>
-        <ul class="sdc-list">
-          <li>Gestructureerde gesprekken en coaching</li>
-          <li>Werken aan persoonlijke doelen en vaardigheden</li>
-          <li>Praktische ondersteuning in een neutrale omgeving</li>
-          <li>Intakegesprekken en voortgangsevaluaties</li>
-        </ul>
-        <a href="contact.html" class="link-arrow">Meer informatie</a>
+        <p>Wij geloven erin om samen met jou de begeleiding zo te organiseren dat jij je gehoord voelt en we samen stappen kunnen zetten om de kwaliteit van leven te verbeteren. Hierin gaan wij aansluiting vinden op jou behoeftes, om op die manier effectief met elkaar aan de slag te gaan en de vooraf gestelde doelen samen te bereiken.</p>
+        <p>Breddels heeft werkervaring met onderstaande psychische aandoeningen: Autisme, ADHD/ADD, gedragsproblematiek, verstandelijke beperking, persoonlijkheidsproblematiek, psychiatrische aandoeningen, depressie, angststoornissen en crisissituaties.</p>
+        <p><em>Wij richten ons niet op wat iemand heeft, maar we richten ons op wie jij bent.</em></p>
+        <a href="contact.html" class="link-arrow">Maak een afspraak</a>
       </div>
     </div>
 
     <!-- Dagbesteding -->
-    <div class="service-detail-card" data-reveal>
+    <div class="service-detail-card reverse" id="dagbesteding" data-reveal>
       <div class="sdc-photo">
         <img src="https://picsum.photos/seed/group-activity33/840/640" alt="Dagbesteding" />
       </div>
@@ -589,21 +582,21 @@
         <div class="sdc-icon">
           <svg viewBox="0 0 24 24" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <p class="label">Structuur en activiteiten</p>
+        <p class="label">Structuur en zinvolle activiteiten</p>
         <h3>Dagbesteding</h3>
-        <p>Structuur en zinvolle activiteiten die passen bij jouw ritme en mogelijkheden. Dagbesteding helpt om een ritme op te bouwen en sociale vaardigheden te ontwikkelen.</p>
+        <p>In samenwerking met <strong>DagbestedingPlus te Lisse</strong> (Ali Exoo en zijn team) bieden we gespecialiseerde dagbesteding op locatie te Lisse, individuele begeleiding en begeleiding in de thuissituatie. Breddels werkt nauw samen in trajecten voor mensen met een verstandelijke beperking — gericht op zelfzorg, vrije tijd, daginvulling en ontwikkeling.</p>
         <ul class="sdc-list">
-          <li>Activiteiten afgestemd op niveau en interesse</li>
-          <li>Opbouwen van dagstructuur en routine</li>
-          <li>Sociale contacten en samenwerken</li>
-          <li>Ondersteuning door ervaren begeleiders</li>
+          <li>Gespecialiseerde dagbesteding op locatie te Lisse</li>
+          <li>Individuele begeleiding afgestemd op jouw mogelijkheden</li>
+          <li>Activiteiten gericht op zelfzorg, vrije tijd en ontwikkeling</li>
+          <li>Samenwerking met gediplomeerde gedragswetenschapper</li>
         </ul>
         <a href="contact.html" class="link-arrow">Meer informatie</a>
       </div>
     </div>
 
     <!-- Paardencoaching -->
-    <div class="service-detail-card reverse" data-reveal>
+    <div class="service-detail-card" id="paardencoaching" data-reveal>
       <div class="sdc-photo">
         <img src="https://picsum.photos/seed/horse-nature91/840/640" alt="Paardencoaching" />
       </div>
@@ -611,21 +604,17 @@
         <div class="sdc-icon">
           <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 0v18M3 12h18"/></svg>
         </div>
-        <p class="label">Bijzonder traject</p>
+        <p class="label">Begeleiding met paarden</p>
         <h3>Paardencoaching</h3>
-        <p>Paarden zijn eerlijk en reageren puur op wat je uitstraalt. Paardencoaching is een krachtige methode om zelfvertrouwen, communicatie en zelfbewustzijn te ontwikkelen — zonder woorden.</p>
-        <ul class="sdc-list">
-          <li>Ervaringsgericht leren in de natuur</li>
-          <li>Ontwikkelen van zelfvertrouwen en grenzen stellen</li>
-          <li>Werken aan non-verbale communicatie</li>
-          <li>Geschikt voor mensen van alle achtergronden</li>
-        </ul>
-        <a href="contact.html" class="link-arrow">Meer informatie</a>
+        <p>Bij Breddels Hulpverlening bieden we paardencoaching sessies aan, waarbij je de mogelijkheid hebt om persoonlijke groei en ontwikkeling te ervaren. Paarden zijn gevoelige en intuïtieve dieren die sterk reageren op non-verbale signalen en emotionele energie. In deze paardencoaching sessies fungeren zij als krachtige spiegels, waardoor deelnemers zich bewust worden van hun gedrag, emoties en patronen. Een mooie aanvulling op ons huidige aanbod.</p>
+        <p>De paardencoaching wordt gegeven door Sheila en haar paarden. Zij begeleidt mensen in het verkennen van thema's zoals leiderschap, communicatie, zelfvertrouwen en het overwinnen van drempels. In een fijne en veilige omgeving gaan we niet te veel praten maar vooral samen doen. Door te ervaren wat de interactie met het paard met je doet en de observatie (spiegelen) komen we daar waar je heen wilt. Het gaat er niet om of je het goed of fout doet — we gaan samen ervaren wat je contact met het paard doet, welk gevoel dit bij je oproept en of je dit herkent in het dagelijkse leven.</p>
+        <p>Hoe ga je daar komen? Wat heb je nodig? Welke stappen ga je daarvoor nemen?</p>
+        <a href="contact.html" class="link-arrow">Afspraak maken</a>
       </div>
     </div>
 
     <!-- Opvoedend boksen -->
-    <div class="service-detail-card" data-reveal>
+    <div class="service-detail-card reverse" id="opvoedend-boksen" data-reveal>
       <div class="sdc-photo">
         <img src="https://picsum.photos/seed/boxing-sport74/840/640" alt="Opvoedend boksen" />
       </div>
@@ -635,7 +624,7 @@
         </div>
         <p class="label">Energie en discipline</p>
         <h3>Opvoedend boksen</h3>
-        <p>Boksen als middel voor persoonlijke groei. Niet om te vechten, maar om discipline, zelfbeheersing en doorzettingsvermogen te ontwikkelen. Een bewezen aanpak voor jongeren en volwassenen.</p>
+        <p>Boksen als middel voor persoonlijke groei. Niet om te vechten, maar om discipline, zelfbeheersing en doorzettingsvermogen te ontwikkelen. Een bewezen aanpak voor jongeren en volwassenen waarbij je energie positief inzet.</p>
         <ul class="sdc-list">
           <li>Discipline en zelfbeheersing als fundament</li>
           <li>Omgaan met frustratie en agressie op een positieve manier</li>
@@ -646,16 +635,23 @@
       </div>
     </div>
 
-    <!-- Coming soon: Boerderij -->
+    <!-- Ontmoeten op de boerderij -->
     <div class="coming-soon-card" data-reveal>
       <div>
         <div class="cs-badge">
           <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           Binnenkort beschikbaar
         </div>
-        <h3>Dagbesteding op de boerderij</h3>
-        <p>In de nabije toekomst biedt Breddels Hulpverlening ook dagbesteding aan op een boerderij. Werken met dieren en natuur in een rustige, groene omgeving — voor wie dat extra houvast zoekt.</p>
-        <p style="margin-top:12px">Wil je op de hoogte blijven wanneer dit beschikbaar komt? Neem contact met ons op.</p>
+        <h3>Ontmoeten op de boerderij</h3>
+        <p>Binnenkort starten wij de boerderij. Hier willen we samen met elkaar een plek creëren waar jij je welkom voelt, gezien wordt en we samen actief aan de slag gaan. Heb jij het gevoel van eenzaamheid? Kom asjeblieft langs voor een kennismaking en hopelijk gaan we in een veilige, ontspannen setting met elkaar de uitdaging aan om deze plek te laten groeien tot iets moois.</p>
+        <p style="margin-top:12px; margin-bottom:8px; font-size:.9rem; font-weight:600; color:var(--navy);">Wat gaan we hier aanbieden?</p>
+        <ul class="sdc-list" style="margin-bottom:0">
+          <li>Verzorging van de dieren (voeren, schoonmaken hokken)</li>
+          <li>Het onderhoud van de boerderij</li>
+          <li>Onderhoud van het groen rondom de boerderij in samenwerking met de gemeente</li>
+          <li>Het bakken van cake/taart</li>
+          <li>Het schenken van koffie/thee op eigen terrein</li>
+        </ul>
         <a href="contact.html" class="link-arrow" style="margin-top:20px; display:inline-flex">Houd me op de hoogte</a>
       </div>
       <div class="cs-photo">
@@ -663,6 +659,64 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SPECIALISTISCHE TRAJECTEN
+═══════════════════════════════════════════ -->
+<section class="services-detail" id="specialistische-trajecten" style="background: var(--pale);">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">Voor complexe situaties</p>
+      <h2>Specialistische trajecten</h2>
+      <p>Wij denken en werken graag samen in (tijdelijk) vastgelopen situaties.</p>
+    </div>
+    <div class="service-detail-card" data-reveal>
+      <div class="sdc-photo">
+        <img src="https://picsum.photos/seed/specialist-care62/840/640" alt="Specialistische trajecten" />
+      </div>
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <p class="label">Intensieve zorg</p>
+        <h3>Menswaardige ondersteuning bij vastgelopen situaties</h3>
+        <p>Door jarenlang actief te zijn in de intensieve zorg hebben we de kennis en ervaring om de kwaliteit van leven samen te doen verbeteren. Dit vraagt om een gesprek met elkaar en we op de inhoud op een lijn een goede start maken.</p>
+        <p>Hierbij is het van belang dat we elkaar vasthouden, ook als het even lastig wordt — wij zijn hierin onvoorwaardelijk.</p>
+        <p>Breddels heeft werkervaring met: <strong>Autisme, ADHD/ADD, gedragsproblematiek, verstandelijke beperking, persoonlijkheidsproblematiek, psychiatrische aandoeningen, depressie, angststoornissen</strong> en crisissituaties.</p>
+        <a href="contact.html" class="link-arrow">Gesprek aanvragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FINANCIERINGSVORMEN
+═══════════════════════════════════════════ -->
+<section style="background: var(--white); padding: 72px 0;">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <p class="label">Vergoeding</p>
+      <h2>Financieringsvormen</h2>
+      <p>Bij Breddels Hulpverlening hebben wij ervaring met ingekochte trajecten via de WMO, de WLZ en PGB. Mocht je hier vragen over hebben staan wij je graag te woord en bespreken we de mogelijkheden.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:8px;" data-reveal data-reveal-delay="1">
+      <div style="background:var(--pale); border-radius:var(--radius-lg); padding:28px 36px; text-align:center;">
+        <div style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">WMO</div>
+        <p style="font-size:.88rem; margin:0;">Wet maatschappelijke ondersteuning</p>
+      </div>
+      <div style="background:var(--pale); border-radius:var(--radius-lg); padding:28px 36px; text-align:center;">
+        <div style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">WLZ</div>
+        <p style="font-size:.88rem; margin:0;">Wet langdurige zorg</p>
+      </div>
+      <div style="background:var(--pale); border-radius:var(--radius-lg); padding:28px 36px; text-align:center;">
+        <div style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">PGB</div>
+        <p style="font-size:.88rem; margin:0;">Persoonsgebonden budget</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -698,6 +752,13 @@
           <p><a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a></p>
           <p class="footer-kvk">KVK: 85659398</p>
         </div>
+        <div class="dekra-badge" title="DEKRA gecertificeerd – HKZ Kleine organisaties">
+          <span class="dekra-circle">DEKRA</span>
+          <span>
+            <strong>HKZ gecertificeerd</strong>
+            <small>Kleine organisaties</small>
+          </span>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -713,10 +774,11 @@
       <div class="footer-col">
         <h5>Aanbod</h5>
         <ul>
-          <li><a href="aanbod.html">Ambulante begeleiding</a></li>
-          <li><a href="aanbod.html">Dagbesteding</a></li>
-          <li><a href="aanbod.html">Paardencoaching</a></li>
-          <li><a href="aanbod.html">Opvoedend boksen</a></li>
+          <li><a href="aanbod.html#ambulante-begeleiding">Ambulante begeleiding</a></li>
+          <li><a href="aanbod.html#dagbesteding">Dagbesteding</a></li>
+          <li><a href="aanbod.html#paardencoaching">Paardencoaching</a></li>
+          <li><a href="aanbod.html#opvoedend-boksen">Opvoedend boksen</a></li>
+          <li><a href="aanbod.html#specialistische-trajecten">Specialistische trajecten</a></li>
         </ul>
       </div>
 
@@ -735,11 +797,11 @@
             </span>
             Instagram
           </a>
-          <a href="#" class="social-link">
+          <a href="https://wa.me/31653317203" target="_blank" rel="noopener" class="social-link">
             <span class="social-icon">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </span>
-            LinkedIn
+            WhatsApp
           </a>
         </div>
       </div>
@@ -747,9 +809,9 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
+      <span>© 2026 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
       <div class="footer-legal">
-        <a href="#">Privacybeleid</a>
+        <a href="privacy.html">Privacybeleid</a>
         <a href="#">Gebruiksvoorwaarden</a>
         <a href="#">Cookie-instellingen</a>
       </div>
