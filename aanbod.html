@@ -253,15 +253,57 @@
     .link-arrow:hover { gap: 10px; }
     .link-arrow::after { content: '→'; }
 
-    /* ─── Boksen photo slider ────────────────── */
-    .sdc-body h4 {
+    /* ─── Boksen accordion + photo slider ───── */
+    .bs-accordion { margin-top: 4px; }
+    .bs-acc-item {
+      border-top: 1px solid var(--border);
+    }
+    .bs-acc-item:last-child { border-bottom: 1px solid var(--border); }
+    .bs-acc-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
       font-family: 'Lora', serif;
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--navy);
-      margin: 18px 0 8px;
+      text-align: left;
+      transition: color .15s;
     }
-    .sdc-body h4:first-of-type { margin-top: 4px; }
+    .bs-acc-trigger:hover { color: var(--blue); }
+    .bs-acc-trigger .bs-acc-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--pale);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform .25s ease, background .15s;
+    }
+    .bs-acc-item.open .bs-acc-icon {
+      transform: rotate(45deg);
+      background: var(--blue);
+      color: var(--white);
+    }
+    .bs-acc-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .bs-acc-panel-inner { padding: 0 0 18px; }
+    .bs-acc-panel-inner > p:first-child { margin-top: 0; }
+    .bs-acc-panel-inner > *:last-child { margin-bottom: 0 !important; }
     .bs-slider {
       position: relative;
       width: 100%;
@@ -724,36 +766,83 @@
         <h3>Opvoedend Boksen</h3>
         <p>Opvoedend Boksen is een unieke trainingsvorm waarin deelnemers werken aan hun persoonlijke ontwikkeling. Door een combinatie van bokstraining en coaching ontwikkelen zij niet alleen hun fysieke kracht, maar ook belangrijke levensvaardigheden.</p>
 
-        <h4>Wat is Opvoedend Boksen?</h4>
-        <p>Opvoedend Boksen is een erkende interventie gericht op de ontwikkeling van (jong)volwassenen. Tijdens de training worden deelnemers begeleid door een gecertificeerde trainer en een bokstrainer. Door middel van gerichte oefeningen en bokstechnieken werken deelnemers aan:</p>
-        <ul class="sdc-list">
-          <li>Zelfvertrouwen</li>
-          <li>Veerkracht</li>
-          <li>Doorzettingsvermogen</li>
-          <li>Respect</li>
-          <li>Sociale vaardigheden</li>
-        </ul>
+        <div class="bs-accordion">
+          <div class="bs-acc-item open">
+            <button class="bs-acc-trigger" type="button" aria-expanded="true">
+              <span>Wat is Opvoedend Boksen?</span>
+              <span class="bs-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="bs-acc-panel">
+              <div class="bs-acc-panel-inner">
+                <p>Opvoedend Boksen is een erkende interventie gericht op de ontwikkeling van (jong)volwassenen. Tijdens de training worden deelnemers begeleid door een gecertificeerde trainer en een bokstrainer. Door middel van gerichte oefeningen en bokstechnieken werken deelnemers aan:</p>
+                <ul class="sdc-list">
+                  <li>Zelfvertrouwen</li>
+                  <li>Veerkracht</li>
+                  <li>Doorzettingsvermogen</li>
+                  <li>Respect</li>
+                  <li>Sociale vaardigheden</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-        <h4>Wat levert het op?</h4>
-        <p>De training helpt deelnemers om sterker in het leven te staan. Ze leren:</p>
-        <ul class="sdc-list">
-          <li>Beter omgaan met stress en spanning</li>
-          <li>Conflicten te herkennen en te vermijden</li>
-          <li>Positief gedrag te ontwikkelen en te versterken</li>
-          <li>Grenzen aan te geven en te respecteren</li>
-        </ul>
-        <p>Daarnaast draagt de training bij aan meer zelfvertrouwen en betere sociale interacties.</p>
+          <div class="bs-acc-item">
+            <button class="bs-acc-trigger" type="button" aria-expanded="false">
+              <span>Wat levert het op?</span>
+              <span class="bs-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="bs-acc-panel">
+              <div class="bs-acc-panel-inner">
+                <p>De training helpt deelnemers om sterker in het leven te staan. Ze leren:</p>
+                <ul class="sdc-list">
+                  <li>Beter omgaan met stress en spanning</li>
+                  <li>Conflicten te herkennen en te vermijden</li>
+                  <li>Positief gedrag te ontwikkelen en te versterken</li>
+                  <li>Grenzen aan te geven en te respecteren</li>
+                </ul>
+                <p>Daarnaast draagt de training bij aan meer zelfvertrouwen en betere sociale interacties.</p>
+              </div>
+            </div>
+          </div>
 
-        <h4>Individueel of in groepsverband</h4>
-        <p>Opvoedend Boksen wordt zowel individueel als in groepsverband aangeboden. <strong>Individuele training</strong> is gericht op persoonlijke doelen en specifieke hulpvragen. <strong>Groepstraining</strong> is gericht op ontmoeting, samenwerking en het versterken van sociale vaardigheden.</p>
+          <div class="bs-acc-item">
+            <button class="bs-acc-trigger" type="button" aria-expanded="false">
+              <span>Individueel of in groepsverband</span>
+              <span class="bs-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="bs-acc-panel">
+              <div class="bs-acc-panel-inner">
+                <p>Opvoedend Boksen wordt zowel individueel als in groepsverband aangeboden. <strong>Individuele training</strong> is gericht op persoonlijke doelen en specifieke hulpvragen. <strong>Groepstraining</strong> is gericht op ontmoeting, samenwerking en het versterken van sociale vaardigheden.</p>
+              </div>
+            </div>
+          </div>
 
-        <h4>Betrekken van het netwerk</h4>
-        <p>In overleg kan het netwerk van de deelnemer (zoals ouders, begeleiders of andere betrokkenen) worden betrokken bij de training. Dit zorgt ervoor dat de geleerde vaardigheden beter toegepast worden in het dagelijks leven.</p>
+          <div class="bs-acc-item">
+            <button class="bs-acc-trigger" type="button" aria-expanded="false">
+              <span>Betrekken van het netwerk</span>
+              <span class="bs-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="bs-acc-panel">
+              <div class="bs-acc-panel-inner">
+                <p>In overleg kan het netwerk van de deelnemer (zoals ouders, begeleiders of andere betrokkenen) worden betrokken bij de training. Dit zorgt ervoor dat de geleerde vaardigheden beter toegepast worden in het dagelijks leven.</p>
+              </div>
+            </div>
+          </div>
 
-        <h4>Voor wie?</h4>
-        <p>Deze training is geschikt voor jongeren en (jong)volwassenen die willen werken aan hun persoonlijke ontwikkeling en sterker willen worden in het omgaan met dagelijkse uitdagingen.</p>
+          <div class="bs-acc-item">
+            <button class="bs-acc-trigger" type="button" aria-expanded="false">
+              <span>Voor wie?</span>
+              <span class="bs-acc-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="bs-acc-panel">
+              <div class="bs-acc-panel-inner">
+                <p>Deze training is geschikt voor jongeren en (jong)volwassenen die willen werken aan hun persoonlijke ontwikkeling en sterker willen worden in het omgaan met dagelijkse uitdagingen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a href="contact.html" class="link-arrow">Kennismakingsgesprek aanvragen</a>
+        <a href="contact.html" class="link-arrow" style="margin-top: 24px;">Kennismakingsgesprek aanvragen</a>
       </div>
     </div>
 
@@ -966,6 +1055,38 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow =
       window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+
+  /* ─── Boksen accordion ──────────────────── */
+  document.querySelectorAll('.bs-accordion').forEach(acc => {
+    const items = acc.querySelectorAll('.bs-acc-item');
+    const setPanel = (item, open) => {
+      const panel = item.querySelector('.bs-acc-panel');
+      const trigger = item.querySelector('.bs-acc-trigger');
+      item.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', open);
+      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
+    };
+    items.forEach(item => {
+      if (item.classList.contains('open')) {
+        const panel = item.querySelector('.bs-acc-panel');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+      item.querySelector('.bs-acc-trigger').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        items.forEach(i => setPanel(i, false));
+        if (!isOpen) setPanel(item, true);
+      });
+    });
+    /* Recalculate open panel height on resize (text reflow) */
+    window.addEventListener('resize', () => {
+      items.forEach(item => {
+        if (item.classList.contains('open')) {
+          const panel = item.querySelector('.bs-acc-panel');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
   });
 
   /* ─── Boksen photo slider ───────────────── */
