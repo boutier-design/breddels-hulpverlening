@@ -253,6 +253,85 @@
     .link-arrow:hover { gap: 10px; }
     .link-arrow::after { content: '→'; }
 
+    /* ─── Boksen photo slider ────────────────── */
+    .sdc-body h4 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 18px 0 8px;
+    }
+    .sdc-body h4:first-of-type { margin-top: 4px; }
+    .bs-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .bs-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform .5s ease;
+    }
+    .bs-track img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .bs-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      border: none;
+      color: var(--navy);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      transition: background .15s, transform .15s;
+      z-index: 2;
+    }
+    .bs-nav:hover { background: var(--white); transform: translateY(-50%) scale(1.06); }
+    .bs-prev { left: 12px; }
+    .bs-next { right: 12px; }
+    .bs-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .bs-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: rgba(255,255,255,.5);
+      cursor: pointer;
+      transition: width .25s, background .25s;
+    }
+    .bs-dots button.active {
+      width: 24px;
+      border-radius: 4px;
+      background: var(--white);
+    }
+
     /* ─── Coming soon card ───────────────────── */
     .coming-soon-card {
       background: var(--white);
@@ -616,22 +695,65 @@
     <!-- Opvoedend boksen -->
     <div class="service-detail-card reverse" id="opvoedend-boksen" data-reveal>
       <div class="sdc-photo">
-        <img src="https://picsum.photos/seed/boxing-sport74/840/640" alt="Opvoedend boksen" />
+        <div class="bs-slider" data-autoplay="6000">
+          <div class="bs-track">
+            <img src="images/boksen/jongeren.webp" alt="Opvoedend boksen — jongere" loading="lazy" />
+            <img src="images/boksen/dsc-1772.webp" alt="Opvoedend boksen — training" loading="lazy" />
+            <img src="images/boksen/boksen-volwassen.webp" alt="Opvoedend boksen — volwassene" loading="lazy" />
+            <img src="images/boksen/dsc-1789.webp" alt="Opvoedend boksen — oefening" loading="lazy" />
+            <img src="images/boksen/bokszak.webp" alt="Opvoedend boksen — bokszak" loading="lazy" />
+            <img src="images/boksen/dsc-1982.webp" alt="Opvoedend boksen — coaching" loading="lazy" />
+          </div>
+          <button class="bs-nav bs-prev" aria-label="Vorige foto" type="button">‹</button>
+          <button class="bs-nav bs-next" aria-label="Volgende foto" type="button">›</button>
+          <div class="bs-dots" role="tablist" aria-label="Foto's">
+            <button type="button" class="active" aria-label="Foto 1"></button>
+            <button type="button" aria-label="Foto 2"></button>
+            <button type="button" aria-label="Foto 3"></button>
+            <button type="button" aria-label="Foto 4"></button>
+            <button type="button" aria-label="Foto 5"></button>
+            <button type="button" aria-label="Foto 6"></button>
+          </div>
+        </div>
       </div>
       <div class="sdc-body">
         <div class="sdc-icon">
           <svg viewBox="0 0 24 24" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-        <p class="label">Energie en discipline</p>
-        <h3>Opvoedend boksen</h3>
-        <p>Boksen als middel voor persoonlijke groei. Niet om te vechten, maar om discipline, zelfbeheersing en doorzettingsvermogen te ontwikkelen. Een bewezen aanpak voor jongeren en volwassenen waarbij je energie positief inzet.</p>
+        <p class="label">Sterker worden — fysiek én mentaal</p>
+        <h3>Opvoedend Boksen</h3>
+        <p>Opvoedend Boksen is een unieke trainingsvorm waarin deelnemers werken aan hun persoonlijke ontwikkeling. Door een combinatie van bokstraining en coaching ontwikkelen zij niet alleen hun fysieke kracht, maar ook belangrijke levensvaardigheden.</p>
+
+        <h4>Wat is Opvoedend Boksen?</h4>
+        <p>Opvoedend Boksen is een erkende interventie gericht op de ontwikkeling van (jong)volwassenen. Tijdens de training worden deelnemers begeleid door een gecertificeerde trainer en een bokstrainer. Door middel van gerichte oefeningen en bokstechnieken werken deelnemers aan:</p>
         <ul class="sdc-list">
-          <li>Discipline en zelfbeheersing als fundament</li>
-          <li>Omgaan met frustratie en agressie op een positieve manier</li>
-          <li>Lichamelijke fitheid en mentale weerbaarheid</li>
-          <li>Groepsgevoel en wederzijds respect</li>
+          <li>Zelfvertrouwen</li>
+          <li>Veerkracht</li>
+          <li>Doorzettingsvermogen</li>
+          <li>Respect</li>
+          <li>Sociale vaardigheden</li>
         </ul>
-        <a href="contact.html" class="link-arrow">Meer informatie</a>
+
+        <h4>Wat levert het op?</h4>
+        <p>De training helpt deelnemers om sterker in het leven te staan. Ze leren:</p>
+        <ul class="sdc-list">
+          <li>Beter omgaan met stress en spanning</li>
+          <li>Conflicten te herkennen en te vermijden</li>
+          <li>Positief gedrag te ontwikkelen en te versterken</li>
+          <li>Grenzen aan te geven en te respecteren</li>
+        </ul>
+        <p>Daarnaast draagt de training bij aan meer zelfvertrouwen en betere sociale interacties.</p>
+
+        <h4>Individueel of in groepsverband</h4>
+        <p>Opvoedend Boksen wordt zowel individueel als in groepsverband aangeboden. <strong>Individuele training</strong> is gericht op persoonlijke doelen en specifieke hulpvragen. <strong>Groepstraining</strong> is gericht op ontmoeting, samenwerking en het versterken van sociale vaardigheden.</p>
+
+        <h4>Betrekken van het netwerk</h4>
+        <p>In overleg kan het netwerk van de deelnemer (zoals ouders, begeleiders of andere betrokkenen) worden betrokken bij de training. Dit zorgt ervoor dat de geleerde vaardigheden beter toegepast worden in het dagelijks leven.</p>
+
+        <h4>Voor wie?</h4>
+        <p>Deze training is geschikt voor jongeren en (jong)volwassenen die willen werken aan hun persoonlijke ontwikkeling en sterker willen worden in het omgaan met dagelijkse uitdagingen.</p>
+
+        <a href="contact.html" class="link-arrow">Kennismakingsgesprek aanvragen</a>
       </div>
     </div>
 
@@ -844,6 +966,45 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow =
       window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
+  });
+
+  /* ─── Boksen photo slider ───────────────── */
+  document.querySelectorAll('.bs-slider').forEach(slider => {
+    const track = slider.querySelector('.bs-track');
+    const slides = track.children.length;
+    const dots = slider.querySelectorAll('.bs-dots button');
+    let i = 0, timer = null;
+    const autoplay = parseInt(slider.dataset.autoplay || '0', 10);
+
+    const go = (n) => {
+      i = (n + slides) % slides;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((d, k) => d.classList.toggle('active', k === i));
+    };
+    const restart = () => {
+      if (!autoplay) return;
+      clearInterval(timer);
+      timer = setInterval(() => go(i + 1), autoplay);
+    };
+
+    slider.querySelector('.bs-prev').addEventListener('click', () => { go(i - 1); restart(); });
+    slider.querySelector('.bs-next').addEventListener('click', () => { go(i + 1); restart(); });
+    dots.forEach((d, k) => d.addEventListener('click', () => { go(k); restart(); }));
+
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', restart);
+
+    /* Touch/swipe */
+    let startX = null;
+    slider.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { go(i + (dx < 0 ? 1 : -1)); restart(); }
+      startX = null;
+    });
+
+    restart();
   });
 </script>
 
