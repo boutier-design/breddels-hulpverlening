@@ -253,57 +253,22 @@
     .link-arrow:hover { gap: 10px; }
     .link-arrow::after { content: '→'; }
 
-    /* ─── Boksen accordion + photo slider ───── */
-    .bs-accordion { margin-top: 4px; }
-    .bs-acc-item {
+    /* ─── Boksen info blokken + photo slider ── */
+    .bs-info { margin-top: 8px; }
+    .bs-info-block {
       border-top: 1px solid var(--border);
+      padding: 18px 0;
     }
-    .bs-acc-item:last-child { border-bottom: 1px solid var(--border); }
-    .bs-acc-trigger {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 14px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      cursor: pointer;
+    .bs-info-block:last-child { border-bottom: 1px solid var(--border); }
+    .bs-info-block h4 {
       font-family: 'Lora', serif;
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--navy);
-      text-align: left;
-      transition: color .15s;
+      margin-bottom: 10px;
     }
-    .bs-acc-trigger:hover { color: var(--blue); }
-    .bs-acc-trigger .bs-acc-icon {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--pale);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      line-height: 1;
-      transition: transform .25s ease, background .15s;
-    }
-    .bs-acc-item.open .bs-acc-icon {
-      transform: rotate(45deg);
-      background: var(--blue);
-      color: var(--white);
-    }
-    .bs-acc-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease;
-    }
-    .bs-acc-panel-inner { padding: 0 0 18px; }
-    .bs-acc-panel-inner > p:first-child { margin-top: 0; }
-    .bs-acc-panel-inner > *:last-child { margin-bottom: 0 !important; }
+    .bs-info-block > p:first-of-type { margin-top: 0; }
+    .bs-info-block > *:last-child { margin-bottom: 0; }
     .bs-slider {
       position: relative;
       width: 100%;
@@ -573,6 +538,7 @@
     <div class="nav-links">
       <a href="wie-zijn-we.html">Wie zijn we</a>
       <a href="aanbod.html" class="active">Aanbod</a>
+      <a href="indrukken.html">Indrukken</a>
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
@@ -583,6 +549,7 @@
   <div class="nav-mobile" id="navMobile">
     <a href="wie-zijn-we.html">Wie zijn we</a>
     <a href="aanbod.html" class="active">Aanbod</a>
+    <a href="indrukken.html">Indrukken</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
   </div>
@@ -676,20 +643,22 @@
         </div>
         <p class="label">Begeleiding thuis of op locatie</p>
         <h3>Ambulante begeleiding</h3>
-        <p>Wij bieden begeleiding bij jou thuis dat gericht is op de leefgebieden wonen, werk/opleiding, vrije tijd en zelfzorg. In overleg kan de begeleiding ook bij ons op locatie in Katwijk, Voorschoten, Lisse en Leiden.</p>
-        <p>Na de aanmelding volgt een intakegesprek waarin we de verschillende leefgebieden in kaart brengen. Het plan dat we maken is van jou en in samenwerking met ons tot stand gekomen — gericht op jouw persoonlijke doelen.</p>
+        <p>Wij bieden begeleiding bij jou thuis, in een vertrouwde omgeving, gericht op wonen, werk of opleiding, vrije tijd en zelfzorg. In overleg kan dit ook op één van onze locaties in Katwijk, Voorschoten, Lisse of Leiden.</p>
+        <p>Na aanmelding brengen we samen jouw situatie en behoeften in kaart. Het plan dat we maken is van jou — wij denken met je mee en werken samen aan jouw doelen.</p>
+        <p>We ondersteunen onder andere bij:</p>
         <ul class="sdc-list">
-          <li>Het in kaart brengen van de hulpvragen</li>
-          <li>Het organiseren van de juiste ondersteuning om jou heen</li>
-          <li>Ondersteuning bij administratieve werkzaamheden en of financiën</li>
-          <li>Het onderhouden en of herstellen van een sociaal netwerk</li>
-          <li>Begeleiding bij het krijgen of behouden van een betekenisvolle daginvulling</li>
-          <li>Het ontwikkelen of herstellen van vaardigheden gericht op zelfstandig wonen</li>
-          <li>Het verbinden en samenwerken met betrokken instanties om jou kwaliteit van leven te verbeteren</li>
+          <li>het verhelderen van hulpvragen</li>
+          <li>het organiseren van passende ondersteuning</li>
+          <li>administratie en/of financiën</li>
+          <li>het opbouwen of herstellen van een sociaal netwerk</li>
+          <li>het vinden van een passende daginvulling</li>
+          <li>(meer) zelfstandig wonen</li>
+          <li>het samenwerken met andere betrokken instanties</li>
         </ul>
-        <p>Wij geloven erin om samen met jou de begeleiding zo te organiseren dat jij je gehoord voelt en we samen stappen kunnen zetten om de kwaliteit van leven te verbeteren. Hierin gaan wij aansluiting vinden op jou behoeftes, om op die manier effectief met elkaar aan de slag te gaan en de vooraf gestelde doelen samen te bereiken.</p>
-        <p>Breddels heeft werkervaring met onderstaande psychische aandoeningen: Autisme, ADHD/ADD, gedragsproblematiek, verstandelijke beperking, persoonlijkheidsproblematiek, psychiatrische aandoeningen, depressie, angststoornissen en crisissituaties.</p>
-        <p><em>Wij richten ons niet op wat iemand heeft, maar we richten ons op wie jij bent.</em></p>
+        <p style="font-weight:600; color:var(--navy);">Daadkrachtige ondersteuning bij crisissituaties</p>
+        <p>Wij hebben ervaring in het begeleiden van mensen met onder andere autisme, ADHD/ADD, gedragsproblematiek, verstandelijke beperking, persoonlijkheidsproblematiek, psychiatrische stoornissen en/of klachten, depressie, angststoornissen en crisissituaties. Tegelijkertijd kijken wij verder dan een diagnose.</p>
+        <p>Wij werken dichtbij, betrokken en afgestemd op jou. Zodat jij je gehoord voelt en stap voor stap vooruit kunt.</p>
+        <p><em>Wij kijken niet naar wat iemand heeft, maar naar wie jij bent.</em></p>
         <a href="contact.html" class="link-arrow">Maak een afspraak</a>
       </div>
     </div>
@@ -705,31 +674,57 @@
         </div>
         <p class="label">Structuur en zinvolle activiteiten</p>
         <h3>Dagbesteding</h3>
-        <p>In samenwerking met <strong>DagbestedingPlus te Lisse</strong> (Ali Exoo en zijn team) bieden we gespecialiseerde dagbesteding op locatie te Lisse, individuele begeleiding en begeleiding in de thuissituatie. Breddels werkt nauw samen in trajecten voor mensen met een verstandelijke beperking — gericht op zelfzorg, vrije tijd, daginvulling en ontwikkeling.</p>
+        <p>In samenwerking met <strong>DagbestedingPlus in Lisse</strong> bieden wij gespecialiseerde dagbesteding, individuele begeleiding en ondersteuning in de thuissituatie.</p>
+        <p>Wij werken nauw samen in trajecten voor mensen met een verstandelijke beperking en richten ons op ontwikkeling, zelfredzaamheid en een betekenisvolle invulling van de dag.</p>
+        <p>Wij bieden onder andere:</p>
         <ul class="sdc-list">
-          <li>Gespecialiseerde dagbesteding op locatie te Lisse</li>
-          <li>Individuele begeleiding afgestemd op jouw mogelijkheden</li>
-          <li>Activiteiten gericht op zelfzorg, vrije tijd en ontwikkeling</li>
-          <li>Samenwerking met gediplomeerde gedragswetenschapper</li>
+          <li>gespecialiseerde dagbesteding op locatie in Lisse</li>
+          <li>individuele begeleiding, afgestemd op jouw mogelijkheden</li>
+          <li>activiteiten gericht op zelfzorg, vrije tijd en persoonlijke ontwikkeling</li>
+          <li>samenwerking met een gediplomeerde gedragswetenschapper</li>
         </ul>
+        <p>Wij sluiten aan bij jouw tempo en mogelijkheden, met aandacht voor wat voor jou werkt en betekenisvol is.</p>
         <a href="contact.html" class="link-arrow">Meer informatie</a>
       </div>
     </div>
 
-    <!-- Paardencoaching -->
+    <!-- Coaching met behulp van paarden -->
     <div class="service-detail-card" id="paardencoaching" data-reveal>
       <div class="sdc-photo">
-        <img src="https://picsum.photos/seed/horse-nature91/840/640" alt="Paardencoaching" />
+        <div class="bs-slider" data-autoplay="6000">
+          <div class="bs-track">
+            <img src="images/paardencoaching/sheila-paarden.webp" alt="Sheila met haar paarden" loading="lazy" />
+            <img src="images/paardencoaching/sheila-haflinger.webp" alt="Sheila en haar haflinger" loading="lazy" />
+            <img src="images/paardencoaching/sheila-aaien.webp" alt="Sheila in contact met een paard" loading="lazy" />
+            <img src="images/paardencoaching/sheila-pony.webp" alt="Sheila met een pony" loading="lazy" />
+          </div>
+          <button class="bs-nav bs-prev" aria-label="Vorige foto" type="button">‹</button>
+          <button class="bs-nav bs-next" aria-label="Volgende foto" type="button">›</button>
+          <div class="bs-dots" role="tablist" aria-label="Foto's">
+            <button type="button" class="active" aria-label="Foto 1"></button>
+            <button type="button" aria-label="Foto 2"></button>
+            <button type="button" aria-label="Foto 3"></button>
+            <button type="button" aria-label="Foto 4"></button>
+          </div>
+        </div>
       </div>
       <div class="sdc-body">
         <div class="sdc-icon">
           <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 0v18M3 12h18"/></svg>
         </div>
         <p class="label">Begeleiding met paarden</p>
-        <h3>Paardencoaching</h3>
-        <p>Bij Breddels Hulpverlening bieden we paardencoaching sessies aan, waarbij je de mogelijkheid hebt om persoonlijke groei en ontwikkeling te ervaren. Paarden zijn gevoelige en intuïtieve dieren die sterk reageren op non-verbale signalen en emotionele energie. In deze paardencoaching sessies fungeren zij als krachtige spiegels, waardoor deelnemers zich bewust worden van hun gedrag, emoties en patronen. Een mooie aanvulling op ons huidige aanbod.</p>
-        <p>De paardencoaching wordt gegeven door Sheila en haar paarden. Zij begeleidt mensen in het verkennen van thema's zoals leiderschap, communicatie, zelfvertrouwen en het overwinnen van drempels. In een fijne en veilige omgeving gaan we niet te veel praten maar vooral samen doen. Door te ervaren wat de interactie met het paard met je doet en de observatie (spiegelen) komen we daar waar je heen wilt. Het gaat er niet om of je het goed of fout doet — we gaan samen ervaren wat je contact met het paard doet, welk gevoel dit bij je oproept en of je dit herkent in het dagelijkse leven.</p>
-        <p>Hoe ga je daar komen? Wat heb je nodig? Welke stappen ga je daarvoor nemen?</p>
+        <h3>Coaching met behulp van paarden</h3>
+        <p>Bij Breddels Hulpverlening bieden we coaching met paarden aan als waardevolle aanvulling op onze begeleiding. In deze sessies werk je samen met paarden — gevoelige en intuïtieve dieren die feilloos reageren op wat jij uitstraalt, vaak zonder dat je het zelf doorhebt.</p>
+        <p>Het contact met het paard helpt je om meer inzicht te krijgen in je gedrag, gevoelens en patronen. Niet door veel te praten, maar juist door te ervaren en te doen.</p>
+        <p>De paardencoaching wordt verzorgd door Sheila en haar paarden. In een rustige en veilige omgeving begeleiden zij je bij thema's zoals zelfvertrouwen, communicatie, grenzen aangeven en het omgaan met uitdagingen.</p>
+        <p>Samen onderzoeken we wat er gebeurt in het moment: wat voel je, wat laat je zien en wat betekent dat voor jou in het dagelijks leven?</p>
+        <p>Het gaat niet om goed of fout — maar om bewust worden en ervaren. Van daaruit kijken we samen verder:</p>
+        <ul class="sdc-list">
+          <li>Waar wil je naartoe?</li>
+          <li>Wat heb je daarvoor nodig?</li>
+          <li>Welke stappen passen bij jou?</li>
+        </ul>
+        <p>Zo ontstaat er ruimte voor groei, op een manier die bij jou past.</p>
         <a href="contact.html" class="link-arrow">Afspraak maken</a>
       </div>
     </div>
@@ -739,7 +734,6 @@
       <div class="sdc-photo">
         <div class="bs-slider" data-autoplay="6000">
           <div class="bs-track">
-            <img src="images/boksen/jongeren.webp" alt="Opvoedend boksen — jongere" loading="lazy" />
             <img src="images/boksen/dsc-1772.webp" alt="Opvoedend boksen — training" loading="lazy" />
             <img src="images/boksen/boksen-volwassen.webp" alt="Opvoedend boksen — volwassene" loading="lazy" />
             <img src="images/boksen/dsc-1789.webp" alt="Opvoedend boksen — oefening" loading="lazy" />
@@ -754,7 +748,6 @@
             <button type="button" aria-label="Foto 3"></button>
             <button type="button" aria-label="Foto 4"></button>
             <button type="button" aria-label="Foto 5"></button>
-            <button type="button" aria-label="Foto 6"></button>
           </div>
         </div>
       </div>
@@ -766,79 +759,44 @@
         <h3>Opvoedend Boksen</h3>
         <p>Opvoedend Boksen is een unieke trainingsvorm waarin deelnemers werken aan hun persoonlijke ontwikkeling. Door een combinatie van bokstraining en coaching ontwikkelen zij niet alleen hun fysieke kracht, maar ook belangrijke levensvaardigheden.</p>
 
-        <div class="bs-accordion">
-          <div class="bs-acc-item open">
-            <button class="bs-acc-trigger" type="button" aria-expanded="true">
-              <span>Wat is Opvoedend Boksen?</span>
-              <span class="bs-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="bs-acc-panel">
-              <div class="bs-acc-panel-inner">
-                <p>Opvoedend Boksen is een erkende interventie gericht op de ontwikkeling van (jong)volwassenen. Tijdens de training worden deelnemers begeleid door een gecertificeerde trainer en een bokstrainer. Door middel van gerichte oefeningen en bokstechnieken werken deelnemers aan:</p>
-                <ul class="sdc-list">
-                  <li>Zelfvertrouwen</li>
-                  <li>Veerkracht</li>
-                  <li>Doorzettingsvermogen</li>
-                  <li>Respect</li>
-                  <li>Sociale vaardigheden</li>
-                </ul>
-              </div>
-            </div>
+        <div class="bs-info">
+          <div class="bs-info-block">
+            <h4>Wat is Opvoedend Boksen?</h4>
+            <p>Opvoedend Boksen is een erkende interventie gericht op de ontwikkeling van (jong)volwassenen. Tijdens de training worden deelnemers begeleid door een gecertificeerde trainer en een bokstrainer. Door middel van gerichte oefeningen en bokstechnieken werken deelnemers aan:</p>
+            <ul class="sdc-list">
+              <li>Zelfvertrouwen</li>
+              <li>Veerkracht</li>
+              <li>Doorzettingsvermogen</li>
+              <li>Respect</li>
+              <li>Sociale vaardigheden</li>
+            </ul>
           </div>
 
-          <div class="bs-acc-item">
-            <button class="bs-acc-trigger" type="button" aria-expanded="false">
-              <span>Wat levert het op?</span>
-              <span class="bs-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="bs-acc-panel">
-              <div class="bs-acc-panel-inner">
-                <p>De training helpt deelnemers om sterker in het leven te staan. Ze leren:</p>
-                <ul class="sdc-list">
-                  <li>Beter omgaan met stress en spanning</li>
-                  <li>Conflicten te herkennen en te vermijden</li>
-                  <li>Positief gedrag te ontwikkelen en te versterken</li>
-                  <li>Grenzen aan te geven en te respecteren</li>
-                </ul>
-                <p>Daarnaast draagt de training bij aan meer zelfvertrouwen en betere sociale interacties.</p>
-              </div>
-            </div>
+          <div class="bs-info-block">
+            <h4>Wat levert het op?</h4>
+            <p>De training helpt deelnemers om sterker in het leven te staan. Ze leren:</p>
+            <ul class="sdc-list">
+              <li>Beter omgaan met stress en spanning</li>
+              <li>Conflicten te herkennen en te vermijden</li>
+              <li>Positief gedrag te ontwikkelen en te versterken</li>
+              <li>Grenzen aan te geven en te respecteren</li>
+            </ul>
+            <p>Daarnaast draagt de training bij aan meer zelfvertrouwen en betere sociale interacties.</p>
           </div>
 
-          <div class="bs-acc-item">
-            <button class="bs-acc-trigger" type="button" aria-expanded="false">
-              <span>Individueel of in groepsverband</span>
-              <span class="bs-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="bs-acc-panel">
-              <div class="bs-acc-panel-inner">
-                <p>Opvoedend Boksen wordt zowel individueel als in groepsverband aangeboden. <strong>Individuele training</strong> is gericht op persoonlijke doelen en specifieke hulpvragen. <strong>Groepstraining</strong> is gericht op ontmoeting, samenwerking en het versterken van sociale vaardigheden.</p>
-              </div>
-            </div>
+          <div class="bs-info-block">
+            <h4>Individueel of in groepsverband</h4>
+            <p>Opvoedend Boksen wordt zowel individueel als in groepsverband aangeboden. <strong>Individuele training</strong> is gericht op persoonlijke doelen en specifieke hulpvragen. <strong>Groepstraining</strong> is gericht op ontmoeting, samenwerking en het versterken van sociale vaardigheden.</p>
           </div>
 
-          <div class="bs-acc-item">
-            <button class="bs-acc-trigger" type="button" aria-expanded="false">
-              <span>Betrekken van het netwerk</span>
-              <span class="bs-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="bs-acc-panel">
-              <div class="bs-acc-panel-inner">
-                <p>In overleg kan het netwerk van de deelnemer (zoals ouders, begeleiders of andere betrokkenen) worden betrokken bij de training. Dit zorgt ervoor dat de geleerde vaardigheden beter toegepast worden in het dagelijks leven.</p>
-              </div>
-            </div>
+          <div class="bs-info-block">
+            <h4>Betrekken van het netwerk</h4>
+            <p>In overleg kan het netwerk van de deelnemer (zoals ouders, begeleiders of andere betrokkenen) worden betrokken bij de training. Dit zorgt ervoor dat de geleerde vaardigheden beter toegepast worden in het dagelijks leven.</p>
           </div>
 
-          <div class="bs-acc-item">
-            <button class="bs-acc-trigger" type="button" aria-expanded="false">
-              <span>Voor wie?</span>
-              <span class="bs-acc-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="bs-acc-panel">
-              <div class="bs-acc-panel-inner">
-                <p>Deze training is geschikt voor jongeren en (jong)volwassenen die willen werken aan hun persoonlijke ontwikkeling en sterker willen worden in het omgaan met dagelijkse uitdagingen.</p>
-              </div>
-            </div>
+          <div class="bs-info-block">
+            <h4>Voor wie?</h4>
+            <p>Deze training is geschikt voor jongeren en (jong)volwassenen die willen werken aan hun persoonlijke ontwikkeling en sterker willen worden in het omgaan met dagelijkse uitdagingen.</p>
           </div>
         </div>
 
@@ -847,26 +805,43 @@
     </div>
 
     <!-- Ontmoeten op de boerderij -->
-    <div class="coming-soon-card" data-reveal>
-      <div>
-        <div class="cs-badge">
-          <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Binnenkort beschikbaar
+    <div class="service-detail-card" id="boerderij" data-reveal>
+      <div class="sdc-photo">
+        <div class="bs-slider" data-autoplay="6000">
+          <div class="bs-track">
+            <img src="images/boerderij/boerderij-tractor.webp" alt="Aan het werk op de boerderij" loading="lazy" />
+            <img src="images/boerderij/boerderij-kwekerij-avond.webp" alt="De kwekerij bij zonsondergang" loading="lazy" />
+            <img src="images/boerderij/boerderij-kwekerij.webp" alt="De kwekerijrijen op de boerderij" loading="lazy" />
+            <img src="images/boerderij/paarden-weide.webp" alt="Het weiland bij de boerderij" loading="lazy" />
+          </div>
+          <button class="bs-nav bs-prev" aria-label="Vorige foto" type="button">‹</button>
+          <button class="bs-nav bs-next" aria-label="Volgende foto" type="button">›</button>
+          <div class="bs-dots" role="tablist" aria-label="Foto's">
+            <button type="button" class="active" aria-label="Foto 1"></button>
+            <button type="button" aria-label="Foto 2"></button>
+            <button type="button" aria-label="Foto 3"></button>
+            <button type="button" aria-label="Foto 4"></button>
+          </div>
         </div>
-        <h3>Ontmoeten op de boerderij</h3>
-        <p>Binnenkort starten wij de boerderij. Hier willen we samen met elkaar een plek creëren waar jij je welkom voelt, gezien wordt en we samen actief aan de slag gaan. Heb jij het gevoel van eenzaamheid? Kom asjeblieft langs voor een kennismaking en hopelijk gaan we in een veilige, ontspannen setting met elkaar de uitdaging aan om deze plek te laten groeien tot iets moois.</p>
-        <p style="margin-top:12px; margin-bottom:8px; font-size:.9rem; font-weight:600; color:var(--navy);">Wat gaan we hier aanbieden?</p>
-        <ul class="sdc-list" style="margin-bottom:0">
-          <li>Verzorging van de dieren (voeren, schoonmaken hokken)</li>
-          <li>Het onderhoud van de boerderij</li>
-          <li>Onderhoud van het groen rondom de boerderij in samenwerking met de gemeente</li>
-          <li>Het bakken van cake/taart</li>
-          <li>Het schenken van koffie/thee op eigen terrein</li>
-        </ul>
-        <a href="contact.html" class="link-arrow" style="margin-top:20px; display:inline-flex">Houd me op de hoogte</a>
       </div>
-      <div class="cs-photo">
-        <img src="https://picsum.photos/seed/boerderij/700/480" alt="Boerderij dagbesteding" />
+      <div class="sdc-body">
+        <div class="sdc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+        </div>
+        <p class="label">Ontmoeten, meedoen en groeien</p>
+        <h3>Ontmoeten op de boerderij</h3>
+        <p>Wij zijn gestart met ontmoeten op de boerderij — een plek in Katwijk waar je welkom bent, gezien wordt en waar we samen actief bezig zijn. Een plek om elkaar te ontmoeten, tot rust te komen en stap voor stap te groeien.</p>
+        <p>Voel je je soms alleen of mis je verbinding? Je bent van harte welkom om langs te komen en kennis te maken. Samen creëren we een veilige en ontspannen omgeving waarin we bouwen aan iets waardevols — voor jou en met elkaar.</p>
+        <p style="font-weight:600; color:var(--navy);">Wat kun je hier doen?</p>
+        <p>Op de boerderij werken we samen aan een zinvolle en praktische daginvulling, zoals:</p>
+        <ul class="sdc-list">
+          <li>het verzorgen van de dieren (voeren, verzorgen en schoonmaken)</li>
+          <li>het onderhouden van de boerderij</li>
+          <li>het verzorgen van het groen rondom de boerderij, in samenwerking met de gemeente</li>
+          <li>het ontvangen van bezoekers met koffie en thee</li>
+        </ul>
+        <p>We kijken samen naar wat bij jou past, in jouw tempo. Gewoon door te doen, te ervaren en samen bezig te zijn.</p>
+        <a href="contact.html" class="link-arrow">Kom kennismaken</a>
       </div>
     </div>
 
@@ -914,7 +889,7 @@
       <h2>Financieringsvormen</h2>
       <p>Bij Breddels Hulpverlening hebben wij ervaring met ingekochte trajecten via de WMO, de WLZ en PGB. Mocht je hier vragen over hebben staan wij je graag te woord en bespreken we de mogelijkheden.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:8px;" data-reveal data-reveal-delay="1">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:24px; margin-top:8px;" data-reveal data-reveal-delay="1">
       <div style="background:var(--pale); border-radius:var(--radius-lg); padding:28px 36px; text-align:center;">
         <div style="font-family:'Lora',serif; font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">WMO</div>
         <p style="font-size:.88rem; margin:0;">Wet maatschappelijke ondersteuning</p>
@@ -978,6 +953,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="wie-zijn-we.html">Wie zijn we</a></li>
           <li><a href="aanbod.html">Aanbod</a></li>
+          <li><a href="indrukken.html">Indrukken</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -1023,7 +999,7 @@
       <span>© 2026 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
       <div class="footer-legal">
         <a href="privacy.html">Privacybeleid</a>
-        <a href="#">Gebruiksvoorwaarden</a>
+        <a href="privacy.html#rechten">Privacyrechten &amp; klachten</a>
         <a href="#">Cookie-instellingen</a>
       </div>
     </div>
@@ -1057,39 +1033,7 @@
       window.scrollY > 10 ? '0 2px 20px rgba(27,58,107,.12)' : 'none';
   });
 
-  /* ─── Boksen accordion ──────────────────── */
-  document.querySelectorAll('.bs-accordion').forEach(acc => {
-    const items = acc.querySelectorAll('.bs-acc-item');
-    const setPanel = (item, open) => {
-      const panel = item.querySelector('.bs-acc-panel');
-      const trigger = item.querySelector('.bs-acc-trigger');
-      item.classList.toggle('open', open);
-      trigger.setAttribute('aria-expanded', open);
-      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
-    };
-    items.forEach(item => {
-      if (item.classList.contains('open')) {
-        const panel = item.querySelector('.bs-acc-panel');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
-      item.querySelector('.bs-acc-trigger').addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        items.forEach(i => setPanel(i, false));
-        if (!isOpen) setPanel(item, true);
-      });
-    });
-    /* Recalculate open panel height on resize (text reflow) */
-    window.addEventListener('resize', () => {
-      items.forEach(item => {
-        if (item.classList.contains('open')) {
-          const panel = item.querySelector('.bs-acc-panel');
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-        }
-      });
-    });
-  });
-
-  /* ─── Boksen photo slider ───────────────── */
+  /* ─── Foto sliders ──────────────────────── */
   document.querySelectorAll('.bs-slider').forEach(slider => {
     const track = slider.querySelector('.bs-track');
     const slides = track.children.length;

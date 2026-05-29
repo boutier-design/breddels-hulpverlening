@@ -164,6 +164,13 @@
     .whatsapp-fab { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.45); transition: transform .2s ease, box-shadow .2s ease; }
     .whatsapp-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
     .whatsapp-fab svg { width: 28px; height: 28px; fill: white; }
+
+    /* ─── Responsive footer ──────────────────── */
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-legal { flex-wrap: wrap; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -179,6 +186,7 @@
     <div class="nav-links">
       <a href="wie-zijn-we.html">Wie zijn we</a>
       <a href="aanbod.html">Aanbod</a>
+      <a href="indrukken.html">Indrukken</a>
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Afspraak maken</a>
@@ -189,6 +197,7 @@
   <div class="nav-mobile" id="navMobile">
     <a href="wie-zijn-we.html">Wie zijn we</a>
     <a href="aanbod.html">Aanbod</a>
+    <a href="indrukken.html">Indrukken</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="btn btn-primary">Afspraak maken</a>
   </div>
@@ -233,13 +242,13 @@
       <nav class="toc" aria-label="Inhoudsopgave">
         <h5>Op deze pagina</h5>
         <ul>
-          <li><a href="#privacy">ePrivacyverklaring</a></li>
-          <li><a href="#dienstverlening">Nodig voor dienstverlening</a></li>
-          <li><a href="#wettelijk">Wettelijke verplichtingen</a></li>
-          <li><a href="#persoonsgegevens">Persoonsgegevens</a></li>
-          <li><a href="#plichten">Plichten</a></li>
-          <li><a href="#rechten">Uw rechten</a></li>
-          <li><a href="#klachten">Klachtenregeling</a></li>
+          <li><a href="#privacy">Privacyverklaring</a></li>
+          <li><a href="#doel">Doel van de gegevensverwerking</a></li>
+          <li><a href="#verwerking">Verwerking en beveiliging</a></li>
+          <li><a href="#bewaartermijn">Wettelijke bewaartermijn</a></li>
+          <li><a href="#vertrouwelijkheid">Vertrouwelijkheid</a></li>
+          <li><a href="#rechten">Rechten van betrokkenen</a></li>
+          <li><a href="#klachten">Klachten en vragen</a></li>
           <li><a href="#medezeggenschap">Medezeggenschapsregeling</a></li>
         </ul>
       </nav>
@@ -248,50 +257,56 @@
       <div class="privacy-body" data-reveal>
 
         <div class="privacy-intro">
-          <p>Breddels Hulpverlening verwerkt medische gegevens van zijn cliënten. Deze gegevens zijn gevoelig en kwetsbaar en daarom is de privacy van onze cliënten belangrijk. In de onderstaande verklaring kan de cliënt lezen welke gegevens wij verwerken en waarvoor. Daarbij vermelden wij welke rechten de cliënt heeft.</p>
+          <p>Breddels Hulpverlening hecht grote waarde aan de bescherming van uw persoonsgegevens. In het kader van onze dienstverlening verwerken wij (medische) persoonsgegevens van onze cliënten. Deze gegevens zijn gevoelig van aard en worden daarom met de grootst mogelijke zorgvuldigheid behandeld.</p>
+          <p>In deze privacyverklaring informeren wij u over welke gegevens wij verwerken, met welk doel dit gebeurt en welke rechten u heeft.</p>
         </div>
 
-        <h2 id="privacy">ePrivacyverklaring</h2>
-        <p>Breddels Hulpverlening hecht grote waarde aan de bescherming van de persoonsgegevens van haar cliënten. Wij handelen in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en andere toepasselijke wet- en regelgeving op het gebied van privacy.</p>
+        <h2 id="privacy">Privacyverklaring</h2>
+        <p>Wij handelen in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en andere toepasselijke wet- en regelgeving op het gebied van privacy. Deze privacyverklaring is van toepassing op onze cliënten, bezoekers van onze website en situaties waarin wij waarnemen voor een collega-zorgaanbieder.</p>
 
-        <h2 id="dienstverlening">Nodig voor dienstverlening</h2>
-        <p>Breddels Hulpverlening staat voor het leveren van kwalitatieve zorg. Dit is dan ook de reden dat wij persoonsgegevens van u verzamelen. Op deze manier kunnen wij goede hulpverlening leveren, kunnen wij contact met u opnemen en de facturatie verzorgen.</p>
-        <p>Op het moment dat wij andere dienstverleners inschakelen kunnen wij uw gegevens delen. Het delen van uw gegevens doen wij enkel met uw toestemming en we verstrekken alleen de benodigde informatie.</p>
-
-        <h2 id="wettelijk">Wettelijke verplichtingen</h2>
-        <p>Breddels Hulpverlening is verplicht om medische dossiers 15 jaar te bewaren. Als deze wettelijke termijn is verlopen en u bent niet langer cliënt bij ons, worden de gegevens vernietigd. Als u na deze periode nog cliënt blijft bij Breddels Hulpverlening bewaren wij uw gegevens om u in de toekomst van dienst te kunnen zijn.</p>
-        <p>De privacyverklaring geldt voor onze cliënten, bezoekers van onze website en wanneer wij waarnemen voor een collega zorgaanbieder. Breddels Hulpverlening is verantwoordelijk voor het verzamelen, verwerken en gebruiken van uw gegevens.</p>
-
-        <h2 id="persoonsgegevens">Persoonsgegevens</h2>
-        <p>Breddels Hulpverlening definieert persoonsgegevens als gegevens die te herleiden zijn tot een natuurlijk persoon. Bij iedere aanmelding vragen wij de cliënt of verwijzer om een aantal persoonsgegevens. Dit zijn de naam, adres, geboortedatum, telefoonnummer, mailadres en reden van aanmelding. Wanneer de cliënt begeleid wordt, worden deze gegevens vastgelegd in een behandelplan. Dit behandelplan is beveiligd in ons elektronische systeem.</p>
-        <p>Breddels Hulpverlening kan uw gegevens verzamelen, bewaren, raadplegen, gebruiken, met elkaar in verband brengen en verstrekken aan derde partijen die voor Breddels Hulpverlening een dienst uitvoeren. Dit kan Breddels Hulpverlening alleen doen met uw toestemming. Deze toestemming kunt u te allen tijde intrekken. Als u geen toestemming geeft kan Breddels Hulpverlening u niet goed van dienst zijn.</p>
-        <p>Breddels Hulpverlening kan door gebruik te maken van uw gegevens begeleiding bieden. Daarbij kan het zijn dat er onverwachts toch niet goed gaat met de bescherming van uw persoonsgegevens — of wij vermoeden dat dit het geval is. Dan zullen wij direct melding maken bij de Autoriteit Persoonsgegevens. Breddels Hulpverlening brengt u te allen tijde op de hoogte.</p>
-
-        <h2 id="plichten">Plichten</h2>
-        <p>Breddels Hulpverlening heeft een geheimhoudingsplicht en mag niet zomaar informatie delen met anderen. Medewerkers van Breddels Hulpverlening zijn allen verplicht tot geheimhouding.</p>
-        <p>De gegevens van de cliënt worden alleen gedeeld met de cliënt, diegene die bij de hulpverlening betrokken is en of aan degene waarvoor de cliënt toestemming heeft gegeven.</p>
-        <p>Breddels Hulpverlening deelt geen persoonsgegevens met een land buiten de Europese Economische Ruimte.</p>
-
-        <h2 id="rechten">Uw rechten</h2>
-        <p>Als cliënt heeft u het recht om kennis te nemen van de gegevens in uw dossier. U kunt op afspraak uw dossier inzien onder begeleiding van Breddels Hulpverlening. Verder heeft een cliënt recht op een afschrift van zijn of haar dossier. Persoonlijke aantekeningen vallen niet onder het inzagerecht. Gegevens van derden in uw dossier zullen in beginsel onzichtbaar gemaakt worden.</p>
-        <p>Als cliënt heeft u de volgende rechten:</p>
+        <h2 id="doel">Doel van de gegevensverwerking</h2>
+        <p>Ten behoeve van het verlenen van kwalitatief goede zorg en dienstverlening verwerkt Breddels Hulpverlening persoonsgegevens. Deze verwerking is noodzakelijk voor:</p>
         <ul>
-          <li>Recht op inzage van uw dossier (op afspraak)</li>
-          <li>Recht op een afschrift van uw dossier</li>
-          <li>Recht op rectificatie van onjuiste persoonsgegevens</li>
-          <li>Recht op aanvulling van uw dossier</li>
-          <li>Recht op verwijdering van uw gegevens (met uitzonderingen)</li>
-          <li>Recht op beperking van de gegevensverwerking</li>
-          <li>Recht op verzet tegen de gegevensverwerking</li>
-          <li>Recht op het verkrijgen van uw gegevens in elektronische vorm</li>
+          <li>het bieden van passende begeleiding en behandeling</li>
+          <li>het onderhouden van contact met cliënten</li>
+          <li>het voeren van een correcte administratie, waaronder facturatie</li>
         </ul>
-        <p>Een cliënt kan zijn of haar gegevens laten verwijderen. Niet in alle gevallen is verwijdering mogelijk. Hierbij moet gelet worden op het aanmerkelijk belang van een ander om de gegevens te bewaren (denk aan een rechtszaak of erfelijkheid) en andere wettelijke voorschriften die zich verzetten tegen vernietiging.</p>
-        <p>Mocht u een beroep willen doen op een van deze rechten, kunt u hiervoor schriftelijk een verzoek indienen door te mailen naar <a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a>.</p>
+        <p>Indien het in het kader van de dienstverlening noodzakelijk is om samen te werken met andere zorgverleners, kunnen persoonsgegevens worden gedeeld. Dit gebeurt uitsluitend met uw voorafgaande toestemming en beperkt zich tot de gegevens die noodzakelijk zijn voor de uitvoering van de betreffende dienstverlening.</p>
 
-        <h2 id="klachten">Klachtenregeling</h2>
-        <p>Mocht de cliënt een klacht hebben over de verwerking van zijn of haar persoonsgegevens dan kan de cliënt altijd contact opnemen met Breddels Hulpverlening. Samen met de cliënt zoeken we dan naar een oplossing. Mocht de cliënt zich niet gehoord voelen kan de cliënt een klacht indienen bij de <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
-        <p>Op het moment dat er sprake is van ontevredenheid met betrekking tot de hulpverlening die Breddels Hulpverlening verleent, streven wij ernaar om samen met de cliënt naar een oplossing te zoeken. Onze focus ligt op samen oplossingsgericht denken.</p>
-        <p>Mochten we er samen niet uitkomen, dan kan de cliënt contact opnemen met <a href="https://www.klachtenportaalzorg.nl" target="_blank" rel="noopener">Klachtenportaalzorg</a>.</p>
+        <h2 id="verwerking">Verwerking en beveiliging van persoonsgegevens</h2>
+        <p>De persoonsgegevens die wij verwerken omvatten onder andere: naam, adresgegevens, geboortedatum, telefoonnummer, e-mailadres en de reden van aanmelding. Gedurende de begeleiding worden deze gegevens opgenomen in een behandel- of begeleidingsplan.</p>
+        <p>Alle gegevens worden opgeslagen in een beveiligd elektronisch systeem. Breddels Hulpverlening treft passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen verlies, onbevoegde toegang of onrechtmatige verwerking.</p>
+        <p>In het geval van een datalek of vermoeden daarvan, zal Breddels Hulpverlening handelen conform de geldende wet- en regelgeving. Indien noodzakelijk wordt hiervan melding gedaan bij de Autoriteit Persoonsgegevens en wordt u hierover geïnformeerd.</p>
+
+        <h2 id="bewaartermijn">Wettelijke bewaartermijn</h2>
+        <p>Breddels Hulpverlening is op grond van de wet verplicht medische dossiers gedurende een periode van 15 jaar te bewaren. Na afloop van deze termijn worden de gegevens vernietigd, tenzij verdere bewaring noodzakelijk is op grond van wettelijke verplichtingen of indien u nog in zorg bent.</p>
+
+        <h2 id="vertrouwelijkheid">Vertrouwelijkheid</h2>
+        <p>Breddels Hulpverlening is gehouden aan een strikte geheimhoudingsplicht. Alle medewerkers zijn verplicht tot vertrouwelijke omgang met persoonsgegevens.</p>
+        <p>Persoonsgegevens worden uitsluitend verstrekt aan:</p>
+        <ul>
+          <li>de cliënt zelf</li>
+          <li>direct bij de hulpverlening betrokken zorgverleners</li>
+          <li>derden, uitsluitend indien de cliënt daarvoor expliciet toestemming heeft gegeven</li>
+        </ul>
+        <p>Er worden geen persoonsgegevens verstrekt aan partijen buiten de Europese Economische Ruimte (EER).</p>
+
+        <h2 id="rechten">Rechten van betrokkenen</h2>
+        <p>Als cliënt heeft u op grond van de Algemene Verordening Gegevensbescherming (AVG) de volgende rechten:</p>
+        <ul>
+          <li>recht op inzage in uw persoonsgegevens</li>
+          <li>recht op rectificatie van onjuiste gegevens</li>
+          <li>recht op aanvulling van uw dossier</li>
+          <li>recht op verwijdering van gegevens (voor zover wettelijk toegestaan)</li>
+          <li>recht op beperking van de verwerking</li>
+          <li>recht op bezwaar tegen de verwerking</li>
+          <li>recht op overdraagbaarheid van persoonsgegevens</li>
+        </ul>
+        <p>U kunt een verzoek tot uitoefening van deze rechten indienen via <a href="mailto:info@breddelshulpverlening.nl">info@breddelshulpverlening.nl</a>. Breddels Hulpverlening zal uw verzoek zorgvuldig beoordelen en hier binnen de wettelijke termijn op reageren.</p>
+
+        <h2 id="klachten">Klachten en vragen</h2>
+        <p>Indien u vragen heeft over deze privacyverklaring of de verwerking van uw persoonsgegevens, kunt u contact opnemen met Breddels Hulpverlening. Wij streven ernaar om samen met u tot een passende oplossing te komen.</p>
+        <p>Mochten we er samen niet uitkomen, dan kunt u zich wenden tot de aangesloten onafhankelijke klachteninstantie <a href="https://www.klachtenportaalzorg.nl" target="_blank" rel="noopener">Klachtenportaalzorg</a>.</p>
 
         <h2 id="medezeggenschap">Medezeggenschapsregeling</h2>
         <p>Bij Breddels Hulpverlening vinden wij het belangrijk dat jij als cliënt — en jouw netwerk — mee kunt denken over belangrijke zaken die betrekking hebben op onze hulpverlening. Dit betekent dat jij en je netwerk mee kan denken over belangrijke zaken die betrekking hebben over onze hulpverlening.</p>
@@ -349,6 +364,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="wie-zijn-we.html">Wie zijn we</a></li>
           <li><a href="aanbod.html">Aanbod</a></li>
+          <li><a href="indrukken.html">Indrukken</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -394,7 +410,7 @@
       <span>© 2026 Breddels Hulpverlening. Alle rechten voorbehouden.</span>
       <div class="footer-legal">
         <a href="privacy.html">Privacybeleid</a>
-        <a href="#">Gebruiksvoorwaarden</a>
+        <a href="privacy.html#rechten">Privacyrechten &amp; klachten</a>
         <a href="#">Cookie-instellingen</a>
       </div>
     </div>
