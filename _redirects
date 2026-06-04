@@ -1,0 +1,8 @@
+# 301-redirects oude WordPress-URL's -> nieuwe site (behoud SEO-autoriteit)
+/zorgaanbod/              /aanbod    301
+/zorgaanbod               /aanbod    301
+/privacy-klachten-rechten/  /privacy 301
+/privacy-klachten-rechten   /privacy 301
+/aanmelden/               /contact   301
+/aanmelden                /contact   301
+/contact/                 /contact   301
