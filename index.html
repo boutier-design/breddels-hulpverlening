@@ -418,6 +418,8 @@
       white-space: nowrap;
     }
     .contact-form button:hover { background: #9dc8e0; }
+    .contact-form.is-invalid { box-shadow: 0 0 0 3px #f2a7a7, 0 8px 32px rgba(0,0,0,.2); }
+    .contact-error { font-size: .85rem; font-weight: 600; color: #ffd6d6; margin: -4px 0 12px; }
     .contact-note { font-size: .78rem; color: rgba(255,255,255,.45); }
 
     /* ─── Footer ─────────────────────────────── */
@@ -910,9 +912,11 @@
     <div data-reveal data-reveal-delay="2">
       <form id="belOnsForm" class="contact-form" action="https://formspree.io/f/mojkpdar" method="POST" novalidate>
         <input type="hidden" name="_subject" value="Terugbelverzoek via website" />
-        <input type="tel" name="telefoonnummer" placeholder="Je telefoonnummer" required />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="tel" name="telefoonnummer" placeholder="Je telefoonnummer" inputmode="numeric" autocomplete="tel" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required aria-required="true" aria-describedby="belOnsError" />
         <button type="submit">Bel ons</button>
       </form>
+      <p class="contact-error" id="belOnsError" role="alert" hidden></p>
       <p class="contact-note" id="belOnsNote">We behandelen je gegevens vertrouwelijk en volgens onze privacyrichtlijnen.</p>
       <p class="contact-note" id="belOnsSuccess" style="display:none;color:#a8d8a8;font-weight:600;">Bedankt! We bellen je zo snel mogelijk terug.</p>
     </div>
@@ -1041,8 +1045,43 @@
   });
 
   /* Terugbelverzoek */
-  document.getElementById('belOnsForm').addEventListener('submit', async function(e) {
+  const belOnsForm = document.getElementById('belOnsForm');
+  const belOnsInput = belOnsForm.querySelector('input[name="telefoonnummer"]');
+  const belOnsError = document.getElementById('belOnsError');
+
+  function toonBelOnsFout(tekst) {
+    belOnsError.textContent = tekst;
+    belOnsError.hidden = false;
+    belOnsForm.classList.add('is-invalid');
+    belOnsInput.setAttribute('aria-invalid', 'true');
+  }
+  function verbergBelOnsFout() {
+    belOnsError.hidden = true;
+    belOnsForm.classList.remove('is-invalid');
+    belOnsInput.removeAttribute('aria-invalid');
+  }
+
+  belOnsInput.addEventListener('input', function() {
+    const alleenCijfers = this.value.replace(/\D/g, '');
+    if (alleenCijfers !== this.value) this.value = alleenCijfers;
+    verbergBelOnsFout();
+  });
+
+  belOnsForm.addEventListener('submit', async function(e) {
     e.preventDefault();
+    const nummer = belOnsInput.value.replace(/\D/g, '');
+    belOnsInput.value = nummer;
+    if (nummer.length === 0) {
+      toonBelOnsFout('Vul je telefoonnummer in, dan bellen we je terug.');
+      belOnsInput.focus();
+      return;
+    }
+    if (nummer.length < 10 || nummer.length > 15) {
+      toonBelOnsFout('Vul een geldig telefoonnummer in van minimaal 10 cijfers.');
+      belOnsInput.focus();
+      return;
+    }
+    verbergBelOnsFout();
     const btn = this.querySelector('button');
     btn.disabled = true;
     btn.textContent = 'Versturen…';
